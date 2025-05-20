@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Sparkles } from 'lucide-react';
 import Image from 'next/image';
+import FloatingIcons from '@/components/FloatingIcons';
+import ExpertiseSection from '@/components/OurExperiseInAi';
+
 
 const agencyItems = [
   { href: '/agency/our-vision', label: 'Our Vision' },
@@ -266,9 +269,12 @@ export default function HeroWithHeader() {
           </p>
         </div>
       </div>
+      <FloatingIcons />
+      <ExpertiseSection />
     </section>
   );
 }
+
 
 const NavLink = ({ href, label }: { href: string; label: string }) => (
   <Link

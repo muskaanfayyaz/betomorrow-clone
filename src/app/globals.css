@@ -33,3 +33,16 @@
     radial-gradient(circle at 25% 85%, rgba(40, 49, 129, 0.9) 0%, transparent 60%), /* #283181 dark */
     radial-gradient(circle at 15% 60%, rgba(22, 70, 186, 0.55) 0%, transparent 65%); /* #1646BA light */
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
