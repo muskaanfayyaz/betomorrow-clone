@@ -5,7 +5,7 @@ import { ArrowRight, Check } from 'lucide-react';
 
 export default function GenAIWorkshop() {
   return (
-    <section className="relative flex flex-col md:flex-row bg-[#f1f6ff] p-8 md:p-16 pt-[10rem] md:pt-[12rem] items-stretch gap-12 max-w-[90rem] mx-auto">
+    <section className="relative flex flex-col md:flex-row bg-gradient-to-br from-blue-200 to-white p-8 md:p-16 pt-[10rem] md:pt-[12rem] items-stretch gap-12 max-w-[90rem] mx-auto">
       
       {/* Left: Image aligned to bottom */}
       <div className="flex-shrink-0 w-full md:w-[40%] flex items-end">
