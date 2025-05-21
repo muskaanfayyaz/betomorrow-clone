@@ -52,9 +52,9 @@ const expertiseList = [
 
 const ExpertiseSection = () => {
   return (
-    <section className={`${poppins.className} px-6 py-16`}>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-start gap-24 mb-12">
+    <section className={`${poppins.className} px-4 py-12`}>
+      <div className="max-w-[1400px] mx-auto">
+        <div className="flex flex-col lg:flex-row items-start gap-16 mb-8">
           {/* Image */}
           <div className="pt-[6px]">
             <Image
@@ -77,17 +77,17 @@ const ExpertiseSection = () => {
         </div>
 
         {/* Expertise Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {expertiseList.map((item, index) => (
             <div
               key={index}
-              className="relative bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-8 rounded-xl shadow-2xl border border-blue-400/20 transition-colors duration-300 w-full min-w-[350px] hover:border-white"
+              className="relative bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-xl shadow-2xl border border-gray-400/50 transition-colors duration-300 w-full hover:border-white h-[360px] flex flex-col"
             >
-              <h3 className="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-br from-[#ffffff] to-[#d1d5db]">
+              <h3 className="text-2xl font-light mb-4 text-transparent bg-clip-text bg-gradient-to-br from-[#ffffff] to-[#d1d5db] line-clamp-2">
                 {item.title}
               </h3>
               <p
-                className="text-base leading-relaxed whitespace-pre-line"
+                className="text-sm leading-relaxed flex-grow line-clamp-[10] font-light"
                 dangerouslySetInnerHTML={{
                   __html: item.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
                 }}
