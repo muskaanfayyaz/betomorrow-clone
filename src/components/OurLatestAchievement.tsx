@@ -2,10 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 import { Sparkles } from 'lucide-react';
 import UseCasesSection from './chatbot';
+import StatsSection from './StatsSection';
+import OptimizeAISection from './OptimizeAISection';
 
 const ChatBotInterface = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-200 to-white relative">
+    <div className="min-h-screen bg-gradient-to-br from-blue-200 to-white relative mb-16">
       <div className="container mx-auto px-4 py-8">
         {/* Achievement Image */}
         <div className="mb-8 mt-36">
@@ -59,6 +61,8 @@ const ChatBotInterface = () => {
         </div>
       </div>
       <UseCasesSection />
+      <StatsSection />
+      <OptimizeAISection />
     </div>
   );
 };
