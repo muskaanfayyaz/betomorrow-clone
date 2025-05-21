@@ -41,6 +41,8 @@
   }
 }
 
-.animate-scroll {
-  animation: scroll 20s linear infinite;
+/* In global CSS */
+html,
+body {
+  overflow-x: hidden;
 }
