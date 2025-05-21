@@ -5,7 +5,7 @@ import React from "react";
 
 const OptimizeAISection = () => {
   return (
-    <section className="relative w-full max-w-5xl mx-auto mt-12 mb-14 px-4">
+    <section className="relative w-full max-w-5xl mx-auto mt-12 px-4">
       <div className="relative rounded-3xl overflow-hidden bg-cover bg-center min-h-[250px] md:min-h-[350px] flex items-center justify-center text-center"
         style={{
           backgroundImage: `url('/ai-mapper-card-3840.png')`, 

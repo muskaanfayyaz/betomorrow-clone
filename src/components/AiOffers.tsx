@@ -67,8 +67,8 @@ const offers = [
 
 export default function AiOffers() {
   return (
-    <section className="bg-gradient-to-b from-[#0B0E29] to-[#190F3C] text-white px-6 md:px-20 py-16">
-      <div className="flex flex-col md:flex-row items-start gap-20 mb-10">
+    <section className="animated-gradient text-white px-6 md:px-20 pt-18 pb-20">
+      <div className="flex flex-col md:flex-row items-start gap-20 mb-24 mt-24">
         {/* Ai Offer Image */}
         <div className="w-full md:w-1/2">
           <Image
@@ -79,7 +79,7 @@ export default function AiOffers() {
             className="h-auto"
           />
         </div>
-        <div className="w-full md:w-1/2 flex items-start">
+        <div className="w-full md:w-1/2 flex items-start md:mt-0">
           <p className="text-white/80 text-sm md:text-base">
             Our AI agency offers a range of <span className="underline text-white">artificial intelligence</span> services designed to meet your specific requirements. Each offer can be modulated and supplemented by additional options, enabling total adaptation to your specifications and business constraints.
           </p>
@@ -88,18 +88,18 @@ export default function AiOffers() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {offers.map((offer, index) => (
-          <div key={index} className="bg-[#1C1F4A] rounded-2xl p-8 flex flex-col justify-between shadow-md transition-all duration-300 hover:shadow-lg hover:border hover:border-white min-h-[450px]">
+          <div key={index} className="relative bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-[22px] shadow-2xl border border-gray-400/50 transition-colors duration-300 hover:border-white min-h-[400px] flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl md:text-3xl font-light mb-4">{offer.title}</h3>
-              <p className="text-base md:text-lg text-white/70 mb-8">{offer.subtitle}</p>
-              <ul className="space-y-5 text-base md:text-lg text-white/80">
+              <h3 className="text-2xl md:text-3xl font-medium mb-3 text-transparent bg-clip-text bg-gradient-to-br from-[#ffffff] to-[#d1d5db]">{offer.title}</h3>
+              <p className="text-base md:text-base text-white/70 mb-6 font-normal">{offer.subtitle}</p>
+              <ul className="space-y-4 text-base md:text-base text-white/80 font-normal">
                 {offer.description.map((item, i) => (
                   <li key={i} className="list-disc list-inside" dangerouslySetInnerHTML={{ __html: item }} />
                 ))}
               </ul>
             </div>
-            <button className="mt-10 w-full flex items-center justify-center gap-2 bg-white text-black text-base font-medium px-6 py-3 rounded-full hover:bg-gray-200 transition">
-              {offer.button} <ArrowRight size={20} />
+            <button className="mt-8 w-full flex items-center justify-center gap-2 bg-white text-black text-base font-normal px-6 py-2.5 rounded-full">
+              {offer.button} <ArrowRight size={18} />
             </button>
           </div>
         ))}

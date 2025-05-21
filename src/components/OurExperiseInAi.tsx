@@ -52,7 +52,7 @@ const expertiseList = [
 
 const ExpertiseSection = () => {
   return (
-    <section className={`${poppins.className} px-4 py-12`}>
+    <section className={`${poppins.className} px-4 py-12 pb-24`}>
       <div className="max-w-[1400px] mx-auto">
         <div className="flex flex-col lg:flex-row items-start gap-16 mb-8">
           {/* Image */}
