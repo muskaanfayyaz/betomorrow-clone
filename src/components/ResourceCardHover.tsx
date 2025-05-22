@@ -99,11 +99,37 @@ const ResourceCard: React.FC<Resource> = ({
 };
 
 export default function ResourcesSection() {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
-      {resources.map((res, idx) => (
-        <ResourceCard key={idx} {...res} />
-      ))}
-    </div>
-  );
-}
+    return (
+      <div className="p-6 pt-24">
+        {/* Top Section with Image and Button */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+          {/* Left: Resource Image */}
+          <div className="text-left">
+            <Image
+              src="/resourse-title.png"
+              alt="STAY TUNED OUR RESSOURCES"
+              width={550}
+              height={450}
+              className="h-auto object-contain mb-2"
+            />
+            <p className="text-black text-sm md:text-base mt-2">
+              100% AI resources to help you reach the top.
+            </p>
+          </div>
+  
+          {/* Right: Button */}
+          <button className="mt-4 md:mt-0 flex items-center gap-2 border border-black rounded-full px-5 py-2 text-black text-sm">
+            See Resources <span className="text-xl">→</span>
+          </button>
+        </div>
+  
+        {/* Resource Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          {resources.map((res, idx) => (
+            <ResourceCard key={idx} {...res} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+  
