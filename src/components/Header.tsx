@@ -1,8 +1,8 @@
 'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
-import { Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 const agencyItems = [
@@ -33,7 +33,7 @@ const industriesItems = [
   { href: '/industries/sport', label: 'Sport' },
 ];
 
-const Header = () => {
+export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState({
     agency: false,
     expertise: false,
@@ -42,9 +42,8 @@ const Header = () => {
 
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
-
   const navRef = useRef<HTMLElement>(null);
-  const [navHeight, setNavHeight] = useState(65); // Reduced height
+  const [navHeight, setNavHeight] = useState(65);
 
   useEffect(() => {
     if (navRef.current) {
@@ -66,11 +65,11 @@ const Header = () => {
   };
 
   return (
-    <>
+    <div className="w-full fixed top-0 left-0 z-50">
       {/* Logo */}
       <div
         style={{ height: navHeight }}
-        className="fixed top-4 left-6 flex items-center z-50 cursor-pointer select-none"
+        className="absolute top-4 left-6 flex items-center cursor-pointer select-none"
       >
         <Link href="/" className="flex items-center">
           <Image
@@ -87,7 +86,7 @@ const Header = () => {
       {/* Top-right Buttons */}
       <div
         style={{ height: navHeight }}
-        className="fixed top-4 right-6 flex items-center gap-3 z-50"
+        className="absolute top-4 right-6 flex items-center gap-3"
       >
         <Link
           href="/start-your-project"
@@ -117,7 +116,7 @@ const Header = () => {
                 <li>
                   <button
                     onClick={() => selectLanguage('en')}
-                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 rounded-full text-sm"
+                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 rounded-full text-sm text-black"
                   >
                     EN
                   </button>
@@ -125,7 +124,7 @@ const Header = () => {
                 <li>
                   <button
                     onClick={() => selectLanguage('fr')}
-                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 rounded-full text-sm"
+                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 rounded-full text-sm text-black"
                   >
                     FR
                   </button>
@@ -137,7 +136,7 @@ const Header = () => {
       </div>
 
       {/* Nav */}
-      <header ref={navRef} className="bg-transparent py-1.5 shadow-sm">
+      <header ref={navRef} className="bg-transparent py-1.5 shadow-sm mt-0 mb-0">
         <nav
           className="ml-48 top-4 mx-auto w-[62vw] max-w-4xl px-4 py-2.5 flex items-center justify-center gap-5 rounded-[60px] border border-gray-200 bg-white relative text-xs sm:text-sm md:text-base"
           style={{ minHeight: navHeight * 0.8 }}
@@ -150,7 +149,7 @@ const Header = () => {
               >
                 Agency
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform ${
+                  className={`w-3 h-3 text-black transition-transform ${
                     dropdownOpen.agency ? 'rotate-180' : 'rotate-0'
                   }`}
                 />
@@ -203,27 +202,26 @@ const Header = () => {
             </li>
 
             <li>
-            <Link
-  href="/lets-talk-ai"
-  className="px-4 py-1.5 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-2"
-  style={{
-    background:
-      'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-  }}
->
-  <Sparkles className="w-5 h-5" fill="#397FFF" />
-  Let&apos;s Talk AI
-</Link>
-
+              <Link
+                href="/lets-talk-ai"
+                className="px-4 py-1.5 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-2"
+                style={{
+                  background:
+                    'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                <Sparkles className="w-5 h-5" fill="#397FFF" />
+                Let&apos;s Talk AI
+              </Link>
             </li>
           </ul>
         </nav>
       </header>
-    </>
+    </div>
   );
-};
+}
 
 const NavLink = ({ href, label }: { href: string; label: string }) => (
   <Link
@@ -241,7 +239,7 @@ const DropdownMenu = ({
   items: { href: string; label: string }[];
   close: () => void;
 }) => (
-  <div className="absolute top-full left-0 mt-1 max-h-72 overflow-auto max-w-[170px] rounded-lg border border-gray-300 bg-white p-2 shadow-lg z-50">
+  <div className="absolute top-full left-0 mt-1 max-h-72 overflow-auto max-w-[170px] rounded-lg border border-gray-300 bg-white p-2 shadow-lg z-50 text-black">
     <ul>
       {items.map(({ href, label }) => (
         <li key={href} onClick={close}>
@@ -256,5 +254,3 @@ const DropdownMenu = ({
     </ul>
   </div>
 );
-
-export default Header;
