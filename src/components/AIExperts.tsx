@@ -8,16 +8,15 @@ const experts = [
   "/people/Rethaller_Tom_comext_site_jaune-750.jpg",
   "/people/Property_1_S-750.png",
   "/people/Lassont_Florian_comext_site_jaune-384.jpg",
-  "/people/Baleinier_Thibault_comext_site_bleu-96.jpg",
   "/people/Malagie_Anne_comext_site_jaune-750.jpg",
   "/people/Ray_Charly_comext_site_bleu-750.jpg",
   "/people/Chataigner_Johan_comext_site_jaune-750.jpg",
-  "/people/Holcher_Sandrine_comext_site_bleu-96.jpg",
 ];
 
 export default function AIExperts() {
   return (
-    <div className="relative mt-16 overflow-hidden pointer-events-none">
+    <div className="relative mt-16 overflow-hidden pb-24">
+      {/* Heading image */}
       <div>
           <Image
             src="/all-our-ai-expert.png"
@@ -28,12 +27,13 @@ export default function AIExperts() {
           />
         </div>
 
-      <div className="w-full overflow-hidden relative">
-        <div className="flex gap-12 animate-slide whitespace-nowrap">
+      {/* Auto-scrolling expert images */}
+      <div className="w-full overflow-hidden">
+        <div className="flex gap-6 animate-scroll-experts whitespace-nowrap w-[600%]">
           {[...experts, ...experts].map((src, index) => (
             <div
               key={index}
-              className="min-w-[300px] h-[400px] relative flex-shrink-0 rounded-2xl overflow-hidden"
+              className="min-w-[250px] h-[350px] relative flex-shrink-0 rounded-2xl overflow-hidden"
             >
               <Image
                 src={src}

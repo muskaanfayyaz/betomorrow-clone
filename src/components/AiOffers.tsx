@@ -86,7 +86,7 @@ export default function AiOffers() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-36">
         {offers.map((offer, index) => (
           <div key={index} className="relative bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-[22px] shadow-2xl border border-gray-400/50 transition-colors duration-300 hover:border-white min-h-[400px] flex flex-col justify-between">
             <div>

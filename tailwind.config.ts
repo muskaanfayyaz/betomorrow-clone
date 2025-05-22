@@ -3,6 +3,15 @@ import type { Config } from 'tailwindcss';
 const config: Config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}',
+
+    // Enable Tailwind to keep `underline` and `text-white` used in raw HTML
+    {
+      raw: 'underline text-white',
+      extension: 'html',
+    },
   ],
   theme: {
     extend: {

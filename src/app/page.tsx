@@ -2,6 +2,7 @@ import HeroSection from "@/components/HeroSection";
 import ChatBotInterface from "@/components/OurLatestAchievement";
 import AiOffers from "@/components/AiOffers";
 import GenAIWorkshop from "@/components/GenAIWorkshop";
+import AiProjectSection from "@/components/AiProjectSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <ChatBotInterface />
         <AiOffers />
         <GenAIWorkshop/>
+        <AiProjectSection/>
     </main>
   );
 }

@@ -41,7 +41,12 @@
   }
 }
 
-/* In global CSS */
+@layer utilities {
+  .animate-scroll-experts {
+    animation: scroll 20s linear infinite;
+  }
+}
+
 html,
 body {
   overflow-x: hidden;
