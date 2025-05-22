@@ -239,7 +239,7 @@ export default function HeroWithHeader() {
 />
 
 <p className="text-lg md:text-xl font-normal flex items-center gap-3">
-  <span className="w-6 h-0.5 bg-white inline-block"></span>
+  <span className="w-4 h-0.5 bg-white inline-block"></span>
   Transform your business with the power of AI and GenAI
 </p>
           <div className="flex gap-4 mt-10 flex-wrap">

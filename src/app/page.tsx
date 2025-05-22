@@ -4,6 +4,8 @@ import AiOffers from "@/components/AiOffers";
 import GenAIWorkshop from "@/components/GenAIWorkshop";
 import AiProjectSection from "@/components/AiProjectSection";
 import Testimonial from "@/components/Testimonial";
+import ContactForm from "@/components/ContactForm";
+import HomeFooterSection from "@/components/HomeFooterSection";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
         <GenAIWorkshop/>
         <AiProjectSection/>
         <Testimonial/>
+        <ContactForm/>
+        <HomeFooterSection/>
     </main>
   );
 }
