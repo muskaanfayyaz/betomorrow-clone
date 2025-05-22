@@ -37,19 +37,19 @@ export default function TrainingTeam() {
         <p className="text-black mb-12 max-w-xl mt-8 text-xl font-light text-center">
           Our experts who will help you make a real difference in your market.
         </p>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 gap-16">
           {teamMembers.map((member, index) => (
             <div
               key={index}
               className="flex flex-col items-center"
             >
-              <div className="relative w-[22rem] h-[24rem] mb-4">
+              <div className="mb-4 aspect-square w-[20rem]">
                 <Image
                   src={member.image}
                   alt={member.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-3xl"
+                  width={320}
+                  height={320}
+                  className="rounded-3xl w-full h-full object-cover"
                 />
               </div>
               <div className="text-left w-full">
