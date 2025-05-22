@@ -3,6 +3,7 @@ import ChatBotInterface from "@/components/OurLatestAchievement";
 import AiOffers from "@/components/AiOffers";
 import GenAIWorkshop from "@/components/GenAIWorkshop";
 import AiProjectSection from "@/components/AiProjectSection";
+import Testimonial from "@/components/Testimonial";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <AiOffers />
         <GenAIWorkshop/>
         <AiProjectSection/>
+        <Testimonial/>
     </main>
   );
 }
