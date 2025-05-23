@@ -170,7 +170,7 @@ export default function Header() {
                   <div className="relative flex-1">
                     <button
                       onClick={toggleLangDropdown}
-                      className="w-full rounded-full px-6 py-3 bg-gray-100 text-gray-800 font-medium shadow-sm flex items-center justify-center gap-2 hover:bg-gray-200 text-sm"
+                      className="w-full rounded-3xl px-6 py-3 bg-gray-100 text-gray-800 font-medium shadow-sm flex items-center justify-center gap-2 hover:bg-gray-200 text-sm"
                     >
                       {language.toUpperCase()}
                       <ChevronDown className={`w-4 h-4 transition-transform ${langDropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
@@ -227,7 +227,7 @@ export default function Header() {
           </button>
 
           {langDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-20 bg-white border border-gray-200 rounded-full shadow-lg z-50 overflow-hidden">
+            <div className="absolute right-0 mt-2 w-20 bg-white border border-gray-200 rounded-3xl shadow-lg z-50 overflow-hidden">
               <ul>
                 <li>
                   <button
