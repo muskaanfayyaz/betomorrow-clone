@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles, Menu } from 'lucide-react';
 import Image from 'next/image';
 
 const agencyItems = [
@@ -37,6 +37,7 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<'agency' | 'expertise' | 'industries' | null>(null);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleDropdown = (name: typeof openDropdown) => {
     setOpenDropdown((prev) => (prev === name ? null : name));
@@ -63,14 +64,50 @@ export default function Header() {
             alt="Logo"
             width={160}
             height={160}
-            className="object-contain"
+            className="object-contain hidden sm:block"
+            priority
+          />
+          <Image
+            src="/logos/logo-2.png"
+            alt="Mobile Logo"
+            width={40}
+            height={40}
+            className="object-contain sm:hidden"
             priority
           />
         </Link>
       </div>
 
+      {/* Mobile Menu Icon */}
+      <div className="absolute top-4 right-6 sm:hidden z-50">
+        <button onClick={() => setMobileMenuOpen(true)} className="p-2">
+          <Menu className="w-6 h-6 text-ehite" />
+        </button>
+      </div>
+
+      {/* Mobile Slide-out Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed top-0 left-0 w-3/4 h-full bg-white shadow-lg z-50 p-6 space-y-6 overflow-y-auto">
+          <button onClick={() => setMobileMenuOpen(false)} className="text-sm text-right w-full">Close ✕</button>
+          <MobileDropdown title="Agency" items={agencyItems} />
+          <MobileDropdown title="Industries" items={industriesItems} />
+          <MobileDropdown title="Expertise" items={expertiseItems} />
+          <Link href="/our-projects" className="block py-2 text-black font-medium">Our Projects</Link>
+          <Link href="/resources" className="block py-2 text-black font-medium">Resources</Link>
+          <Link href="/lets-talk-ai" className="block py-2 font-semibold" style={{ background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Let&apos;s Talk AI</Link>
+          <div className="pt-4 border-t">
+            <Link
+              href="/start-your-project"
+              className="block w-full rounded-full px-4 py-2 text-sm bg-gradient-to-r from-[#13119E] via-blue-800 to-blue-700 text-white text-center font-semibold shadow-md hover:brightness-110"
+            >
+              Start Your Project
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* Right Buttons */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-3 h-[60px] z-50">
+      <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden sm:flex items-center gap-3 h-[60px] z-50">
         <Link
           href="/start-your-project"
           className="rounded-full px-6 py-2 text-sm bg-gradient-to-r from-[#13119E] via-blue-800 to-blue-700 text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[48px] flex items-center leading-[1.5rem]"
@@ -116,7 +153,7 @@ export default function Header() {
       </div>
 
       {/* Header Navbar */}
-      <header className="bg-transparent py-1.5 shadow-sm relative z-40">
+      <header className="bg-transparent py-1.5 shadow-sm relative z-40 hidden sm:block">
         <div
           className={`ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2.5 border border-gray-200 bg-white text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out ${
             openDropdown ? 'rounded-t-[50px]' : 'rounded-full'
@@ -212,3 +249,25 @@ const NavLink = ({ href, label }: { href: string; label: string }) => (
     {label}
   </Link>
 );
+
+const MobileDropdown = ({ title, items }: { title: string; items: { href: string; label: string }[] }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <button onClick={() => setOpen(!open)} className="w-full text-left font-semibold py-2">
+        {title} {open ? '▴' : '▾'}
+      </button>
+      {open && (
+        <ul className="pl-4 space-y-1">
+          {items.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} className="block py-1 text-sm text-gray-700">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
