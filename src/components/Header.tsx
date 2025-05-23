@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Sparkles, Menu } from 'lucide-react';
+import { ChevronDown, Sparkles, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
 const agencyItems = [
@@ -64,7 +64,15 @@ export default function Header() {
             alt="Logo"
             width={160}
             height={160}
-            className="object-contain hidden sm:block"
+            className="object-contain hidden xl:block"
+            priority
+          />
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={120}
+            height={120}
+            className="object-contain hidden lg:block xl:hidden"
             priority
           />
           <Image
@@ -72,53 +80,144 @@ export default function Header() {
             alt="Mobile Logo"
             width={40}
             height={40}
-            className="object-contain sm:hidden"
+            className="object-contain lg:hidden"
             priority
           />
         </Link>
       </div>
 
       {/* Mobile Menu Icon */}
-      <div className="absolute top-4 right-6 sm:hidden z-50">
-        <button onClick={() => setMobileMenuOpen(true)} className="p-2">
-          <Menu className="w-6 h-6 text-ehite" />
+      <div className="absolute top-4 right-6 lg:hidden z-50">
+        <button 
+          onClick={() => setMobileMenuOpen(true)} 
+          className="p-2 text-white"
+        >
+          <Menu className="w-6 h-6" />
         </button>
       </div>
 
-      {/* Mobile Slide-out Menu */}
+      {/* Mobile Slide-out Menu - Full Screen */}
       {mobileMenuOpen && (
-        <div className="fixed top-0 left-0 w-3/4 h-full bg-white shadow-lg z-50 p-6 space-y-6 overflow-y-auto">
-          <button onClick={() => setMobileMenuOpen(false)} className="text-sm text-right w-full">Close ✕</button>
-          <MobileDropdown title="Agency" items={agencyItems} />
-          <MobileDropdown title="Industries" items={industriesItems} />
-          <MobileDropdown title="Expertise" items={expertiseItems} />
-          <Link href="/our-projects" className="block py-2 text-black font-medium">Our Projects</Link>
-          <Link href="/resources" className="block py-2 text-black font-medium">Resources</Link>
-          <Link href="/lets-talk-ai" className="block py-2 font-semibold" style={{ background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Let&apos;s Talk AI</Link>
-          <div className="pt-4 border-t">
-            <Link
-              href="/start-your-project"
-              className="block w-full rounded-full px-4 py-2 text-sm bg-gradient-to-r from-[#13119E] via-blue-800 to-blue-700 text-white text-center font-semibold shadow-md hover:brightness-110"
-            >
-              Start Your Project
-            </Link>
+        <div className="fixed inset-0 z-50">
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-50" 
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          
+          {/* Slidebar */}
+          <div className="absolute top-0 right-0 h-full w-full bg-white shadow-xl">
+            <div className="h-full flex flex-col overflow-y-auto">
+              {/* Header */}
+              <div className="flex justify-between items-center p-6 border-b sticky top-0 bg-white z-10">
+                <Link href="/" className="flex items-center">
+                  <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    width={120}
+                    height={40}
+                    className="object-contain"
+                    priority
+                  />
+                </Link>
+                <button 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="p-2 rounded-full hover:bg-gray-100"
+                >
+                  <X className="w-6 h-6 text-gray-600" />
+                </button>
+              </div>
+              
+              {/* Content */}
+              <div className="flex-1 p-6 space-y-6">
+                <MobileDropdown title="Agency" items={agencyItems} />
+                <MobileDropdown title="Industries" items={industriesItems} />
+                <MobileDropdown title="Expertise" items={expertiseItems} />
+                <Link 
+                  href="/our-projects" 
+                  className="block py-3 text-gray-800 font-medium border-b border-gray-100"
+                >
+                  Our Projects
+                </Link>
+                <Link 
+                  href="/resources" 
+                  className="block py-3 text-gray-800 font-medium border-b border-gray-100"
+                >
+                  Resources
+                </Link>
+                <Link 
+                  href="/lets-talk-ai" 
+                  className="block py-3 font-semibold border-b border-gray-100"
+                  style={{ 
+                    background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  Let&apos;s Talk AI
+                </Link>
+              </div>
+              
+              {/* Fixed Buttons at Bottom */}
+              <div className="p-6 border-t border-gray-200 sticky bottom-0 bg-white">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/start-your-project"
+                    className="flex-1 rounded-full px-6 py-3 text-sm bg-[#13119E] text-white font-semibold text-center shadow-md hover:brightness-110 transition"
+                  >
+                    Start Your Project
+                  </Link>
+                  <div className="relative flex-1">
+                    <button
+                      onClick={toggleLangDropdown}
+                      className="w-full rounded-full px-6 py-3 bg-gray-100 text-gray-800 font-medium shadow-sm flex items-center justify-center gap-2 hover:bg-gray-200 text-sm"
+                    >
+                      {language.toUpperCase()}
+                      <ChevronDown className={`w-4 h-4 transition-transform ${langDropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
+                    </button>
+                    {langDropdownOpen && (
+                      <div className="absolute bottom-full left-0 mb-2 w-full bg-white border border-gray-200 rounded-full shadow-lg z-50 overflow-hidden">
+                        <ul>
+                          <li>
+                            <button
+                              onClick={() => selectLanguage('en')}
+                              className="block w-full text-center px-4 py-2 hover:bg-blue-100 text-sm text-gray-800"
+                            >
+                              EN
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => selectLanguage('fr')}
+                              className="block w-full text-center px-4 py-2 hover:bg-blue-100 text-sm text-gray-800"
+                            >
+                              FR
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
 
       {/* Right Buttons */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden sm:flex items-center gap-3 h-[60px] z-50">
+      <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden lg:flex items-center gap-3 h-[48px] z-50">
         <Link
           href="/start-your-project"
-          className="rounded-full px-6 py-2 text-sm bg-gradient-to-r from-[#13119E] via-blue-800 to-blue-700 text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[48px] flex items-center leading-[1.5rem]"
+          className="rounded-full px-6 py-2 text-xs lg:text-sm bg-[#13119E] text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[40px] lg:h-[48px] flex items-center leading-[1.5rem]"
         >
           Start Your Project
         </Link>
 
-        <div className="relative h-[48px] flex items-center">
+        <div className="relative h-[40px] lg:h-[48px] flex items-center">
           <button
             onClick={toggleLangDropdown}
-            className="rounded-full px-4 py-2 bg-white text-black font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-sm h-full leading-[1.5rem]"
+            className="rounded-full px-4 py-2 bg-white text-gray-800 font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-xs lg:text-sm h-full leading-[1.5rem]"
             type="button"
             aria-haspopup="true"
             aria-expanded={langDropdownOpen}
@@ -128,12 +227,12 @@ export default function Header() {
           </button>
 
           {langDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-20 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+            <div className="absolute right-0 mt-2 w-20 bg-white border border-gray-200 rounded-full shadow-lg z-50 overflow-hidden">
               <ul>
                 <li>
                   <button
                     onClick={() => selectLanguage('en')}
-                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 text-sm"
+                    className="block w-full text-center px-3 py-1.5 hover:bg-blue-100 text-xs lg:text-sm text-gray-800"
                   >
                     EN
                   </button>
@@ -141,7 +240,7 @@ export default function Header() {
                 <li>
                   <button
                     onClick={() => selectLanguage('fr')}
-                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 text-sm"
+                    className="block w-full text-center px-3 py-1.5 hover:bg-blue-100 text-xs lg:text-sm text-gray-800"
                   >
                     FR
                   </button>
@@ -153,15 +252,14 @@ export default function Header() {
       </div>
 
       {/* Header Navbar */}
-      <header className="bg-transparent py-1.5 shadow-sm relative z-40 hidden sm:block">
+      <header className="bg-transparent py-1 shadow-sm relative z-40 hidden lg:block">
         <div
-          className={`ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2.5 border border-gray-200 bg-white text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out ${
+          className={`ml-36 lg:ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2 border border-gray-200 bg-white text-xs lg:text-sm transition-all duration-300 ease-in-out ${
             openDropdown ? 'rounded-t-[50px]' : 'rounded-full'
           }`}
-          style={{ position: 'relative' }}
         >
           {/* Navigation Links */}
-          <div className="flex items-center justify-center gap-3 font-medium w-full">
+          <div className="flex items-center justify-center gap-2 lg:gap-3 font-medium w-full">
             <button
               onClick={() => toggleDropdown('agency')}
               className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
@@ -201,19 +299,19 @@ export default function Header() {
 
             <Link
               href="/lets-talk-ai"
-              className="px-4 py-1.5 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-2"
+              className="px-3 lg:px-4 py-1 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-1 lg:gap-2"
               style={{
                 background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              <Sparkles className="w-5 h-5" fill="#397FFF" />
+              <Sparkles className="w-4 h-4 lg:w-5 lg:h-5" fill="#397FFF" />
               Let&apos;s Talk AI
             </Link>
           </div>
 
-          {/* Dropdown menu absolutely positioned below navbar */}
+          {/* Dropdown menu */}
           {openDropdown && dropdownItems && (
             <div
               className="absolute left-0 top-full w-full bg-white border-t border-gray-200 pt-3 pb-4 rounded-b-[60px] grid grid-cols-2 gap-3"
@@ -223,13 +321,13 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="flex items-center gap-2 px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 rounded-md transition"
+                  className="flex items-center gap-2 px-4 py-2 text-xs lg:text-sm text-gray-800 hover:bg-blue-50 rounded-md transition"
                 >
                   <Image
                     src={`/${String(idx + 1).padStart(2, '0')}.png`}
                     alt={`Number ${idx + 1}`}
-                    width={24}
-                    height={24}
+                    width={20}
+                    height={20}
                     className="flex-shrink-0"
                     priority
                   />
@@ -245,7 +343,7 @@ export default function Header() {
 }
 
 const NavLink = ({ href, label }: { href: string; label: string }) => (
-  <Link href={href} className="px-3 py-1 rounded-full text-black hover:bg-blue-100 transition text-sm">
+  <Link href={href} className="px-2 lg:px-3 py-1 rounded-full text-black hover:bg-blue-100 transition text-xs lg:text-sm">
     {label}
   </Link>
 );
@@ -253,15 +351,29 @@ const NavLink = ({ href, label }: { href: string; label: string }) => (
 const MobileDropdown = ({ title, items }: { title: string; items: { href: string; label: string }[] }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div>
-      <button onClick={() => setOpen(!open)} className="w-full text-left font-semibold py-2">
-        {title} {open ? '▴' : '▾'}
+    <div className="border-b border-gray-100">
+      <button 
+        onClick={() => setOpen(!open)} 
+        className="w-full flex justify-between items-center py-3 text-gray-800 font-semibold"
+      >
+        <span>{title}</span>
+        <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </button>
       {open && (
-        <ul className="pl-4 space-y-1">
-          {items.map((item) => (
+        <ul className="pl-4 space-y-2 pb-3">
+          {items.map((item, idx) => (
             <li key={item.href}>
-              <Link href={item.href} className="block py-1 text-sm text-gray-700">
+              <Link 
+                href={item.href} 
+                className="flex items-center gap-3 py-2 text-sm text-gray-700 hover:text-blue-600"
+              >
+                <Image
+                  src={`/${String(idx + 1).padStart(2, '0')}.png`}
+                  alt={`Number ${idx + 1}`}
+                  width={20}
+                  height={20}
+                  className="flex-shrink-0"
+                />
                 {item.label}
               </Link>
             </li>

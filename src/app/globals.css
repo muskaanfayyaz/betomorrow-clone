@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth wave gradient keyframe (not used directly in current classes) */
 @keyframes waveShift {
   0% {
     background-position: 0% 50%;
@@ -14,24 +15,40 @@
   }
 }
 
+/* Repeating animated background with smoother appearance */
 .animated-gradient {
   position: relative;
   overflow: hidden;
-  background-image: repeating-linear-gradient(-95deg, transparent 0%, transparent 20%, rgba(65, 105, 225, 0.3) 30%, rgba(65, 105, 225, 0.3) 40%, transparent 50%, transparent 100%), linear-gradient(to right, #0A113C 0%, #1A205B 40%, #1F3F8C 70%, #3464BC 100%);
-  background-size: 50% 100%, 100% 100%;
+  background-image: 
+    repeating-linear-gradient(
+      -95deg,
+      transparent 0%,
+      transparent 20%,
+      rgba(65, 105, 225, 0.15) 30%,
+      rgba(65, 105, 225, 0.15) 40%,
+      transparent 50%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      #0A113C 0%,
+      #1A205B 40%,
+      #1F3F8C 70%,
+      #3464BC 100%
+    );
+  background-size: 600px 100%, 100% 100%;
   background-repeat: repeat-x, no-repeat;
   animation: patternMove 40s linear infinite;
 }
 
-@keyframes patternMove {
-  0% {
-    background-position: 100% 0%, 0% 0%;
-  }
-  100% {
-    background-position: 0% 0%, 0% 0%;
+/* Responsive fix for smaller screens */
+@media (max-width: 768px) {
+  .animated-gradient {
+    background-size: 300px 100%, 100% 100%;
   }
 }
 
+/* Animation for scrolling experts section */
 @keyframes scroll {
   0% {
     transform: translateX(0%);
@@ -41,17 +58,30 @@
   }
 }
 
+/* Horizontal background movement animation */
+@keyframes patternMove {
+  0% {
+    background-position: 100% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 0% 0%, 0% 0%;
+  }
+}
+
+/* Tailwind custom utility class */
 @layer utilities {
   .animate-scroll-experts {
     animation: scroll 20s linear infinite;
   }
 }
 
+/* Prevent horizontal overflow */
 html,
 body {
   overflow-x: hidden;
 }
 
+/* Custom styled input field */
 .input {
   @apply w-full px-4 py-2 rounded-[24px] bg-white/10 backdrop-blur-md text-white placeholder-white/70 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/40;
 }
