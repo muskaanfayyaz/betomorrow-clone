@@ -15,6 +15,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '1920px',
+        '4xl': '2560px',
+      },
+      maxWidth: {
+        '3xl': '2560px',
+        '4xl': '3840px',
+      },
       keyframes: {
         slide: {
           '0%': { transform: 'translateX(0)' },

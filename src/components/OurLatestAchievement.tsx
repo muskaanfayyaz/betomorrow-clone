@@ -7,19 +7,19 @@ import OptimizeAISection from './OptimizeAISection';
 
 const ChatBotInterface = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-200 to-white relative pb-32">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-white relative pb-32">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24">
-        {/* Achievement Image */}
-        <div className="mb-12">
-          <Image
-            src="/out-latest-achievement.png"
-            alt="Our Latest Achievement"
-            width={1200}
-            height={800}
-            className="w-full h-auto object-contain rounded-lg"
-            priority
-          />
-        </div>
+        {/* Achievement Image responsive */}
+        <div className="max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+  <Image
+    src="/out-latest-achievement.png"
+    alt="Our Latest Achievement"
+    width={1200}
+    height={800}
+    className="w-full h-auto object-contain rounded-lg"
+    priority
+  />
+</div>
 
         {/* Mockup Image */}
         <div className="mt-12">
@@ -34,9 +34,9 @@ const ChatBotInterface = () => {
 
         {/* Text Content */}
         <div className="mt-10">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-black max-w-4xl leading-snug">
-            Guiding citizens through the Bordeaux Métropole PLU
-          </h1>
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-black max-w-4xl leading-snug">
+  Guiding citizens through the Bordeaux Métropole PLU
+</h1>
           <p className="text-base sm:text-lg md:text-xl text-black max-w-3xl leading-relaxed">
             BeTomorrow developed a bespoke agent, optimized by{' '}
             <span className="font-bold">generative AI</span> and <br className="hidden sm:inline" />

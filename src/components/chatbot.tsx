@@ -54,7 +54,7 @@ const useCases = [
 export default function UseCasesSection() {
   return (
     <section className="py-16 px-4 sm:px-8 md:px-16 bg-gradient-to-br from-blue-100 to-white relative">
-      <div className="max-w-7xl mx-auto grid gap-16 md:grid-cols-2">
+      <div className="max-w-7xl mx-auto grid gap-16 grid-cols-1 md:grid-cols-2">
         {useCases.map((useCase, index) => (
           <div
             key={index}
@@ -66,33 +66,34 @@ export default function UseCasesSection() {
           >
             {/* Mockup Image */}
             <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[16/9] rounded-3xl overflow-hidden shadow-lg">
-              <Image
-                src={useCase.image}
-                alt={useCase.title_Img}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw,
-                       (max-width: 1200px) 45vw,
-                       40vw"
-              />
-            </div>
+  <Image
+    src={useCase.image}
+    alt={useCase.title_Img}
+    fill
+    className="object-cover"
+    sizes="(max-width: 768px) 100vw,
+           (max-width: 1200px) 45vw,
+           40vw"
+  />
+</div>
 
             {/* Title Image */}
-            <div className="relative w-full aspect-[4/1] sm:aspect-[3/1] lg:aspect-[5/1]">
+            <div className="relative w-full aspect-[4/1] sm:aspect-[3/1] lg:aspect-[5/1] max-w-full">
               <Image
                 src={useCase.title_Img}
                 alt={useCase.title_Img}
                 fill
                 className="object-contain"
-                sizes="(max-width: 768px) 100vw,
-                       (max-width: 1200px) 45vw,
+                sizes="(max-width: 640px) 100vw,
+                       (max-width: 768px) 90vw,
+                       (max-width: 1024px) 45vw,
                        40vw"
               />
             </div>
 
             {/* Description */}
             <p
-              className="text-lg text-black max-w-3xl"
+              className="text-base sm:text-lg text-black max-w-full md:max-w-3xl"
               dangerouslySetInnerHTML={{ __html: useCase.description }}
             ></p>
 

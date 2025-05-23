@@ -15,68 +15,64 @@ const expertiseList = [
     content: `Large Language Models (LLMs) are capable of analyzing and interpreting virtually
     **unlimited amounts** of textual data, while solving problems in an automated way.
     Our AI agency has seasoned expertise in developing this technology and delivering
-    tailor-made results to companies in their projects.`
+    tailor-made results to companies in their projects.`,
   },
   {
     title: 'Large Multimodal Models (LMM)',
     content: `Multi-modal models (LMMs) are technologies that offer an innovative approach
     enabling companies to analyze images, photos, videos and even **handwritten documents** in real time.
     Thanks to the expertise of our AI agency, we are able to harness the power of LMMs to
-    **transform complex data into concrete actions**, tailored to the specific projects and needs of businesses.`
+    **transform complex data into concrete actions**, tailored to the specific projects and needs of businesses.`,
   },
   {
     title: 'Retrieval Augmented Generation (RAG)',
     content: `Retrieval Augmented Generation (RAG) combines information retrieval and content generation,
     exploiting external data without limiting itself to its training. Our AI agency has over 10 RAG projects
-    in production, and was responsible for the development of **RAGtime**, an innovative digital tool for assessing and monitoring performance.`
+    in production, and was responsible for the development of **RAGtime**, an innovative digital tool for assessing and monitoring performance.`,
   },
   {
     title: 'Natural Language Processing (NLP)',
     content: `NLP is one of the artificial intelligence technologies that uses machine learning to enable corporate IT systems 
     to understand and interact with human language. Our teams leverage this advanced technology to develop applications aimed at 
-    **automating** operations, improving productivity and simplifying the business processes of the companies we work with.`
+    **automating** operations, improving productivity and simplifying the business processes of the companies we work with.`,
   },
   {
     title: 'Machine Learning',
     content: `Machine learning is being deployed on a massive scale. It is revolutionizing the optimization and automation
     of systems in many sectors. Our AI agency develops **tailor-made** models, such as predictive algorithms, image analysis,
-    document recognition and sentiment analysis tools, to precisely meet the requirements of every sector.`
+    document recognition and sentiment analysis tools, to precisely meet the requirements of every sector.`,
   },
   {
     title: 'Data Analysis and utilization',
     content: `Data analysis and exploitation are at the heart of digital transformation strategies, and take on a new dimension
     with artificial intelligence. Our agency's expertise in artificial intelligence enables us to design advanced data processing
     solutions, such as trend detection, predictive analysis, automated segmentation or the extraction of specific information from
-    large **masses of data**.`
+    large **masses of data**.`,
   },
 ];
 
 const ExpertiseSection = () => {
   return (
     <section className={`${poppins.className} px-4 sm:px-6 lg:px-12 pt-24 pb-24`}>
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1400px] 2xl:max-w-[1920px] 3xl:max-w-[2560px] 4xl:max-w-[3840px] mx-auto">
         {/* Top Section: Image + Text */}
         <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16 mb-12">
           {/* Image */}
-<div className="w-full lg:w-1/2">
-  <Image
-    src="/our-expertise-in-ai.png"
-    alt="AI Expertise Heading"
-    width={1000}
-    height={750}
-    className="w-full h-auto rounded-lg object-cover"
-    priority
-  />
-</div>
-
+          <div className="w-full lg:w-1/2">
+            <Image
+              src="/our-expertise-in-ai.png"
+              alt="AI Expertise Heading"
+              width={1000}
+              height={750}
+              className="w-full h-auto rounded-lg object-cover"
+              priority
+            />
+          </div>
 
           {/* Text */}
           <div className="w-full lg:w-1/2 text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
             <p>
-              With over 20 years&apos; experience, BeTomorrow has developed recognized digital know-how in the development of digital solutions.
-            </p>
-            <p className="mt-4">
-              Our engineers, with an average of 10 years&apos; experience, excel in the design, deployment and maintenance of tailor-made artificial intelligence solutions.
+              With over 20 years&apos; experience, BeTomorrow has developed recognized digital know-how in the development of digital solutions.Our engineers, with an average of 10 years&apos; experience, excel in the design, deployment and maintenance of tailor-made artificial intelligence solutions.
             </p>
           </div>
         </div>

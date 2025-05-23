@@ -9,16 +9,16 @@ export default function ContactForm() {
   const [wantsNDA, setWantsNDA] = useState(false);
 
   return (
-    <section className="animated-gradient min-h-screen text-white py-16 px-4 md:px-10 lg:px-20 ">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+    <section className="animated-gradient min-h-screen text-white pt-16 pb-16 lg:pb-8 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-48 3xl:px-64 4xl:px-96">
+      <div className="w-full max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Left Side Image */}
-        <div className="flex flex-col justify-center md:justify-start pt-16">
+        <div className="flex flex-col justify-center md:justify-start pt-16 px-2 sm:px-4 md:px-0">
           <Image
             src="/entrust-ai-project.png"
             alt="Entrust Your AI Project"
-            width={500}
-            height={300}
-            className="w-full h-auto max-w-[500px]"
+            width={700}
+            height={420}
+            className="w-full h-auto max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px]"
             priority
           />
           <p className="mt-6 text-lg font-light">
