@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { DropdownMenu } from '@/components/DropdownMenu';
 
 const agencyItems = [
   { href: '/agency/our-vision', label: 'Our Vision' },
@@ -39,40 +38,25 @@ export default function Header() {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
 
-  const navRef = useRef<HTMLDivElement>(null);
-  const [navDimensions, setNavDimensions] = useState({ width: 0, top: 0, left: 0 });
-
-  useEffect(() => {
-    const updateNavDimensions = () => {
-      if (navRef.current) {
-        const rect = navRef.current.getBoundingClientRect();
-        setNavDimensions({ width: rect.width, top: rect.bottom, left: rect.left });
-      }
-    };
-    updateNavDimensions();
-    window.addEventListener('resize', updateNavDimensions);
-    return () => window.removeEventListener('resize', updateNavDimensions);
-  }, []);
-
   const toggleDropdown = (name: typeof openDropdown) => {
     setOpenDropdown((prev) => (prev === name ? null : name));
   };
 
-  const toggleLangDropdown = () => setLangDropdownOpen(!langDropdownOpen);
+  const toggleLangDropdown = () => setLangDropdownOpen((prev) => !prev);
   const selectLanguage = (lang: 'en' | 'fr') => {
     setLanguage(lang);
     setLangDropdownOpen(false);
   };
 
-  // Decide dropdown items based on openDropdown state
   let dropdownItems = null;
   if (openDropdown === 'agency') dropdownItems = agencyItems;
   else if (openDropdown === 'industries') dropdownItems = industriesItems;
   else if (openDropdown === 'expertise') dropdownItems = expertiseItems;
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50">
-      <div className="absolute top-4 left-6 flex items-center">
+    <div className="w-full fixed top-0 left-0 z-50 bg-transparent">
+      {/* Logo */}
+      <div className="absolute top-4 left-6 flex items-center z-50">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
@@ -85,36 +69,43 @@ export default function Header() {
         </Link>
       </div>
 
-      <div className="absolute top-4 right-6 flex items-center gap-3">
+      {/* Right Buttons */}
+      <div className="absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-3 h-[60px] z-50">
         <Link
           href="/start-your-project"
-          className="rounded-full px-4 py-1.5 text-sm bg-gradient-to-r from-[#13119E] via-blue-800 to-blue-700 text-white font-semibold shadow-md hover:brightness-110 transition duration-300"
+          className="rounded-full px-6 py-2 text-sm bg-gradient-to-r from-[#13119E] via-blue-800 to-blue-700 text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[48px] flex items-center leading-[1.5rem]"
         >
           Start Your Project
         </Link>
 
-        <div className="relative">
+        <div className="relative h-[48px] flex items-center">
           <button
             onClick={toggleLangDropdown}
-            className="rounded-full px-3 py-1 bg-white text-black font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-xs"
+            className="rounded-full px-4 py-2 bg-white text-black font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-sm h-full leading-[1.5rem]"
             type="button"
+            aria-haspopup="true"
+            aria-expanded={langDropdownOpen}
           >
             {language.toUpperCase()}
-            <ChevronDown
-              className={`w-4 h-4 transition-transform ${langDropdownOpen ? 'rotate-180' : 'rotate-0'}`}
-            />
+            <ChevronDown className={`w-4 h-4 transition-transform ${langDropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
           </button>
 
           {langDropdownOpen && (
             <div className="absolute right-0 mt-2 w-20 bg-white border border-gray-200 rounded-md shadow-lg z-50">
               <ul>
                 <li>
-                  <button onClick={() => selectLanguage('en')} className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 text-sm">
+                  <button
+                    onClick={() => selectLanguage('en')}
+                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 text-sm"
+                  >
                     EN
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => selectLanguage('fr')} className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 text-sm">
+                  <button
+                    onClick={() => selectLanguage('fr')}
+                    className="block w-full text-left px-3 py-1.5 hover:bg-blue-100 text-sm"
+                  >
                     FR
                   </button>
                 </li>
@@ -124,32 +115,46 @@ export default function Header() {
         </div>
       </div>
 
-      <header className="bg-transparent py-1.5 shadow-sm relative">
+      {/* Header Navbar */}
+      <header className="bg-transparent py-1.5 shadow-sm relative z-40">
         <div
-          ref={navRef}
-          className="ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2.5 flex items-center justify-center gap-5 rounded-[60px] border border-gray-200 bg-white text-xs sm:text-sm md:text-base relative"
-          // <-- Make navbar container relative for dropdown positioning
+          className={`ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2.5 flex flex-col items-center gap-2 ${
+            openDropdown ? 'rounded-[60px]' : 'rounded-[50px]'
+          } border border-gray-200 bg-white text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out`}
         >
+          {/* Navigation Links */}
           <ul className="flex items-center justify-center gap-3 font-medium w-full">
             <li>
               <button
                 onClick={() => toggleDropdown('agency')}
                 className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'agency'}
               >
                 Agency
-                <ChevronDown className={`w-3 h-3 ${openDropdown === 'agency' ? 'rotate-180' : 'rotate-0'} transition`} />
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform ${openDropdown === 'agency' ? 'rotate-180' : 'rotate-0'}`}
+                />
               </button>
             </li>
 
-            <li><NavLink href="/our-projects" label="Our Projects" /></li>
+            <li>
+              <NavLink href="/our-projects" label="Our Projects" />
+            </li>
 
             <li>
               <button
                 onClick={() => toggleDropdown('industries')}
                 className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'industries'}
               >
                 Industries
-                <ChevronDown className={`w-3 h-3 ${openDropdown === 'industries' ? 'rotate-180' : 'rotate-0'} transition`} />
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform ${openDropdown === 'industries' ? 'rotate-180' : 'rotate-0'}`}
+                />
               </button>
             </li>
 
@@ -157,13 +162,20 @@ export default function Header() {
               <button
                 onClick={() => toggleDropdown('expertise')}
                 className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={openDropdown === 'expertise'}
               >
                 Expertise
-                <ChevronDown className={`w-3 h-3 ${openDropdown === 'expertise' ? 'rotate-180' : 'rotate-0'} transition`} />
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform ${openDropdown === 'expertise' ? 'rotate-180' : 'rotate-0'}`}
+                />
               </button>
             </li>
 
-            <li><NavLink href="/resources" label="Resources" /></li>
+            <li>
+              <NavLink href="/resources" label="Resources" />
+            </li>
 
             <li>
               <Link
@@ -181,15 +193,30 @@ export default function Header() {
             </li>
           </ul>
 
-          {/* Dropdown rendered inside navbar container but outside <li> */}
+          {/* Expanded dropdown inside navbar */}
           {openDropdown && dropdownItems && (
-            <DropdownMenu
-              items={dropdownItems}
-              close={() => setOpenDropdown(null)}
-              width={navDimensions.width}
-              left={0}  // relative to navbar container, so left = 0
-              top="100%" // directly below navbar container
-            />
+            <div
+              className="w-full bg-white border-t border-gray-200 pt-3 pb-4 rounded-b-[60px] grid grid-cols-2 gap-3"
+              style={{ marginTop: '-4px' }}
+            >
+              {dropdownItems.map((item, idx) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="flex items-center gap-2 px-4 py-2 text-sm text-gray-800 hover:bg-blue-50 rounded-md transition"
+                >
+                  <Image
+                    src={`/${String(idx + 1).padStart(2, '0')}.png`}
+                    alt={`Number ${idx + 1}`}
+                    width={24}
+                    height={24}
+                    className="flex-shrink-0"
+                    priority
+                  />
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           )}
         </div>
       </header>
