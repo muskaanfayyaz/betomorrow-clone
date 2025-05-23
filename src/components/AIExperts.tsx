@@ -1,4 +1,3 @@
-// components/AIExperts.tsx
 import Image from "next/image";
 
 const experts = [
@@ -15,25 +14,26 @@ const experts = [
 
 export default function AIExperts() {
   return (
-    <div className="relative mt-16 overflow-hidden pb-24">
-      {/* Heading image */}
-      <div>
-          <Image
-            src="/all-our-ai-expert.png"
-            alt="AI Expert"
-            width={500}
-            height={350}
-            className="h-auto object-contain mb-16"
-          />
-        </div>
+    <section className="relative mt-20 pb-24 overflow-hidden w-full">
+      {/* Left-aligned heading image */}
+      <div className="mb-12 px-4 sm:px-6 lg:px-12 xl:px-24">
+        <Image
+          src="/all-our-ai-expert.png"
+          alt="AI Experts"
+          width={600}
+          height={400}
+          className="h-auto object-contain"
+          priority
+        />
+      </div>
 
-      {/* Auto-scrolling expert images */}
+      {/* Auto-scrolling track */}
       <div className="w-full overflow-hidden">
-        <div className="flex gap-6 animate-scroll-experts whitespace-nowrap w-[600%]">
+        <div className="flex gap-6 w-[200%] animate-slide">
           {[...experts, ...experts].map((src, index) => (
             <div
               key={index}
-              className="min-w-[250px] h-[350px] relative flex-shrink-0 rounded-2xl overflow-hidden"
+              className="min-w-[160px] sm:min-w-[200px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[300px] h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] relative flex-shrink-0 rounded-2xl overflow-hidden"
             >
               <Image
                 src={src}
@@ -45,6 +45,6 @@ export default function AIExperts() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

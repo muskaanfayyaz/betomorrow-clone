@@ -1,8 +1,9 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 
-// Importing the Poppins font (adjust weights/subsets as needed)
 const poppins = Poppins({
   weight: ['400', '600', '700'],
   subsets: ['latin'],
@@ -52,21 +53,25 @@ const expertiseList = [
 
 const ExpertiseSection = () => {
   return (
-    <section className={`${poppins.className} px-4 py-12 pb-24`}>
+    <section className={`${poppins.className} px-4 sm:px-6 lg:px-12 pt-24 pb-24`}>
       <div className="max-w-[1400px] mx-auto">
-        <div className="flex flex-col lg:flex-row items-start gap-16 mb-8">
+        {/* Top Section: Image + Text */}
+        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16 mb-12">
           {/* Image */}
-          <div className="pt-[6px]">
-            <Image
-              src="/our-expertise-in-ai.png"
-              alt="AI Expertise Heading"
-              width={1000}
-              height={750}
-              className="rounded-lg"
-            />
-          </div>
+<div className="w-full lg:w-1/2">
+  <Image
+    src="/our-expertise-in-ai.png"
+    alt="AI Expertise Heading"
+    width={1000}
+    height={750}
+    className="w-full h-auto rounded-lg object-cover"
+    priority
+  />
+</div>
+
+
           {/* Text */}
-          <div className="text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed">
+          <div className="w-full lg:w-1/2 text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
             <p>
               With over 20 years&apos; experience, BeTomorrow has developed recognized digital know-how in the development of digital solutions.
             </p>
@@ -77,17 +82,17 @@ const ExpertiseSection = () => {
         </div>
 
         {/* Expertise Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
           {expertiseList.map((item, index) => (
             <div
               key={index}
-              className="relative bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-xl shadow-2xl border border-gray-400/50 transition-colors duration-300 w-full hover:border-white h-[360px] flex flex-col"
+              className="bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-xl shadow-xl border border-gray-400/40 hover:border-white transition-colors duration-300 flex flex-col min-h-[340px]"
             >
-              <h3 className="text-2xl font-light mb-4 text-transparent bg-clip-text bg-gradient-to-br from-[#ffffff] to-[#d1d5db] line-clamp-2">
+              <h3 className="text-xl sm:text-2xl font-light mb-3 text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-300 line-clamp-2">
                 {item.title}
               </h3>
               <p
-                className="text-sm leading-relaxed flex-grow line-clamp-[10] font-light"
+                className="text-sm leading-relaxed flex-grow font-light line-clamp-[12]"
                 dangerouslySetInnerHTML={{
                   __html: item.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
                 }}

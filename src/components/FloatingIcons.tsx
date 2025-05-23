@@ -19,11 +19,14 @@ const logos = [
 
 export default function FloatingIcons() {
   return (
-    <div className="w-full overflow-hidden mt-12 pointer-events-none">
-      <div className="flex animate-slide gap-8 whitespace-nowrap px-4">
-        <div className="whitespace-nowrap animate-scroll flex gap-10 px-4">
+    <div className="w-full overflow-hidden mt-24 pointer-events-none">
+      <div className="flex animate-slide gap-6 sm:gap-8 md:gap-10 px-4 sm:px-6 md:px-8 whitespace-nowrap">
+        <div className="whitespace-nowrap animate-scroll flex gap-6 sm:gap-8 md:gap-10">
           {[...logos, ...logos].map((logo, index) => (
-            <div key={index} className="min-w-[80px] h-[80px] relative">
+            <div
+              key={index}
+              className="relative min-w-[60px] h-[60px] sm:min-w-[70px] sm:h-[70px] md:min-w-[80px] md:h-[80px]"
+            >
               <Image
                 src={logo}
                 alt={`logo-${index}`}

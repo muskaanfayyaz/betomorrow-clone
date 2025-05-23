@@ -8,50 +8,57 @@ import OptimizeAISection from './OptimizeAISection';
 const ChatBotInterface = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-200 to-white relative pb-32">
-      <div className="container mx-auto px-4 py-8 pb-24">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24">
         {/* Achievement Image */}
-        <div className="mb-8 mt-36">
+        <div className="mb-12">
           <Image
             src="/out-latest-achievement.png"
             alt="Our Latest Achievement"
-            width={600}
-            height={550}
-            className="h-auto"
+            width={1200}
+            height={800}
+            className="w-full h-auto object-contain rounded-lg"
+            priority
           />
         </div>
-        
+
         {/* Mockup Image */}
         <div className="mt-12">
           <Image
             src="/Mockup-PLU-01-1920.jpg"
             alt="Mockup"
-            width={1000}
-            height={1000}
-            className="w-full h-auto rounded-2xl"
+            width={1920}
+            height={1080}
+            className="w-full h-auto object-cover rounded-2xl"
           />
         </div>
 
         {/* Text Content */}
-        <div className="mt-8">
-          <h1 className="text-3xl font-bold mb-4 text-black max-w-3xl">Guiding citizens through the Bordeaux Métropole PLU</h1>
-          <p className="text-lg text-black max-w-3xl">
-            BeTomorrow developed a bespoke agent, optimized by <span className="font-bold">generative AI</span> and <br /> advanced data search, to support Bordeaux Métropole&apos;s PLU and <span className="font-bold">facilitate access<br /> to information</span>.
+        <div className="mt-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-black max-w-4xl leading-snug">
+            Guiding citizens through the Bordeaux Métropole PLU
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-black max-w-3xl leading-relaxed">
+            BeTomorrow developed a bespoke agent, optimized by{' '}
+            <span className="font-bold">generative AI</span> and <br className="hidden sm:inline" />
+            advanced data search, to support Bordeaux Métropole&apos;s PLU and{' '}
+            <span className="font-bold">
+              facilitate access<br className="hidden sm:inline" /> to information
+            </span>.
           </p>
         </div>
 
         {/* Round Buttons */}
-        <div className="mt-8 flex gap-4">
-          <button className="px-6 py-2 rounded-full border-2 border-gray-300 text-black">
-            Tech
-          </button>
-          <button className="px-6 py-2 rounded-full border-2 border-gray-300 text-black">
-            LLM
-          </button>
-          <button className="px-6 py-2 rounded-full border-2 border-gray-300 text-black">
-            Mobility
-          </button>
+        <div className="mt-8 flex flex-wrap gap-4">
+          {['Tech', 'LLM', 'Mobility'].map((label) => (
+            <button
+              key={label}
+              className="px-6 py-2 rounded-full border-2 border-gray-300 text-sm md:text-base text-black"
+            >
+              {label}
+            </button>
+          ))}
           <button
-            className="px-6 py-2 rounded-full font-semibold text-white transition hover:opacity-90 flex items-center gap-2"
+            className="px-6 py-2 rounded-full font-semibold text-sm md:text-base text-white transition hover:opacity-90 flex items-center gap-2"
             style={{
               background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
             }}
@@ -60,6 +67,7 @@ const ChatBotInterface = () => {
           </button>
         </div>
       </div>
+
       <UseCasesSection />
       <StatsSection />
       <OptimizeAISection />
