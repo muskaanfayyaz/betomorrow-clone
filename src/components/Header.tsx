@@ -118,86 +118,69 @@ export default function Header() {
       {/* Header Navbar */}
       <header className="bg-transparent py-1.5 shadow-sm relative z-40">
         <div
-          className={`ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2.5 flex flex-col items-center gap-2 ${
-            openDropdown ? 'rounded-[60px]' : 'rounded-[50px]'
-          } border border-gray-200 bg-white text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out`}
+          className={`ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2.5 border border-gray-200 bg-white text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out ${
+            openDropdown ? 'rounded-t-[50px]' : 'rounded-full'
+          }`}
+          style={{ position: 'relative' }}
         >
           {/* Navigation Links */}
-          <ul className="flex items-center justify-center gap-3 font-medium w-full">
-            <li>
-              <button
-                onClick={() => toggleDropdown('agency')}
-                className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
-                type="button"
-                aria-haspopup="true"
-                aria-expanded={openDropdown === 'agency'}
-              >
-                Agency
-                <ChevronDown
-                  className={`w-3 h-3 transition-transform ${openDropdown === 'agency' ? 'rotate-180' : 'rotate-0'}`}
-                />
-              </button>
-            </li>
+          <div className="flex items-center justify-center gap-3 font-medium w-full">
+            <button
+              onClick={() => toggleDropdown('agency')}
+              className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={openDropdown === 'agency'}
+            >
+              Agency
+              <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'agency' ? 'rotate-180' : 'rotate-0'}`} />
+            </button>
 
-            <li>
-              <NavLink href="/our-projects" label="Our Projects" />
-            </li>
+            <NavLink href="/our-projects" label="Our Projects" />
 
-            <li>
-              <button
-                onClick={() => toggleDropdown('industries')}
-                className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
-                type="button"
-                aria-haspopup="true"
-                aria-expanded={openDropdown === 'industries'}
-              >
-                Industries
-                <ChevronDown
-                  className={`w-3 h-3 transition-transform ${openDropdown === 'industries' ? 'rotate-180' : 'rotate-0'}`}
-                />
-              </button>
-            </li>
+            <button
+              onClick={() => toggleDropdown('industries')}
+              className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={openDropdown === 'industries'}
+            >
+              Industries
+              <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'industries' ? 'rotate-180' : 'rotate-0'}`} />
+            </button>
 
-            <li>
-              <button
-                onClick={() => toggleDropdown('expertise')}
-                className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
-                type="button"
-                aria-haspopup="true"
-                aria-expanded={openDropdown === 'expertise'}
-              >
-                Expertise
-                <ChevronDown
-                  className={`w-3 h-3 transition-transform ${openDropdown === 'expertise' ? 'rotate-180' : 'rotate-0'}`}
-                />
-              </button>
-            </li>
+            <button
+              onClick={() => toggleDropdown('expertise')}
+              className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={openDropdown === 'expertise'}
+            >
+              Expertise
+              <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'expertise' ? 'rotate-180' : 'rotate-0'}`} />
+            </button>
 
-            <li>
-              <NavLink href="/resources" label="Resources" />
-            </li>
+            <NavLink href="/resources" label="Resources" />
 
-            <li>
-              <Link
-                href="/lets-talk-ai"
-                className="px-4 py-1.5 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-2"
-                style={{
-                  background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                <Sparkles className="w-5 h-5" fill="#397FFF" />
-                Let&apos;s Talk AI
-              </Link>
-            </li>
-          </ul>
+            <Link
+              href="/lets-talk-ai"
+              className="px-4 py-1.5 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-2"
+              style={{
+                background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              <Sparkles className="w-5 h-5" fill="#397FFF" />
+              Let&apos;s Talk AI
+            </Link>
+          </div>
 
-          {/* Expanded dropdown inside navbar */}
+          {/* Dropdown menu absolutely positioned below navbar */}
           {openDropdown && dropdownItems && (
             <div
-              className="w-full bg-white border-t border-gray-200 pt-3 pb-4 rounded-b-[60px] grid grid-cols-2 gap-3"
-              style={{ marginTop: '-4px' }}
+              className="absolute left-0 top-full w-full bg-white border-t border-gray-200 pt-3 pb-4 rounded-b-[60px] grid grid-cols-2 gap-3"
+              style={{ marginTop: '-4px', zIndex: 10 }}
             >
               {dropdownItems.map((item, idx) => (
                 <Link
