@@ -16,12 +16,12 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        '3xl': '1920px',
-        '4xl': '2560px',
+        'custom-lg': '1024px',
+        '3xl': '2560px',
       },
       maxWidth: {
-        '3xl': '2560px',
-        '4xl': '3840px',
+        'custom-lg': '1024px',
+        '3xl': '3840px',
       },
       keyframes: {
         slide: {

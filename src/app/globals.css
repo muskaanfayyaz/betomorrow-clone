@@ -141,3 +141,11 @@ body {
   font-style: italic;
   font-weight: 500;
 }
+
+@media (max-width: 320px) {
+  .break-after-business::after,
+  .break-before-genai::before {
+    content: '\A';
+    white-space: pre;
+  }
+}
