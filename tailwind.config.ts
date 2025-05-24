@@ -30,7 +30,7 @@ const config: Config = {
         },
       },
       animation: {
-        slide: 'slide 40s linear infinite',
+        slide: 'slide 35s linear infinite',
       },
     },
   },

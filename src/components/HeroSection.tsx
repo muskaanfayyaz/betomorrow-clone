@@ -8,9 +8,9 @@ import Header from '@/components/Header';
 
 export default function HeroSection() {
   return (
-    <section className="w-full min-h-screen animated-gradient text-white pl-4 pr-5 pt-44 md:pt-48 lg:pt-[2.6rem] xl:pt-44 3xl:pt-[40rem] 3xl:px-[30rem] flex flex-col items-start relative overflow-x-hidden">
+    <section className="w-full min-h-screen animated-gradient text-white pl-4 pr-5 pt-44 md:pt-48 lg:pt-[2.4rem] xl:pt-44 3xl:pt-[40rem] flex flex-col items-start relative overflow-x-hidden">
       <Header />
-    <div className='lg:py-64 lg:px-5 xl:px-20 3xl:pb-[36rem]'>
+    <div className='lg:pt-64 lg:px-5 xl:px-20 3xl:pb-[36rem] 3xl:px-[30rem]'>
       {/* Hero Section */}
       <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-24 md:gap-24 xl:gap-96 items-start">
         {/* Left */}
