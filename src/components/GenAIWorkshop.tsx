@@ -28,9 +28,11 @@ export default function GenAIWorkshop() {
           {/* Right Content */}
           <div className="flex flex-col justify-between text-[#1a1a1a]">
             <div className="space-y-6">
-              <h1 className="text-[1.9rem] small:text-[2.1rem] pr-4 lg:pr-1 3xl:pr-36 md:text-[3rem] lg:text-[3.5rem] xl:text-[3.3rem] 3xl:text-[4rem] mb-6 leading-none text-black whitespace-normal">
-                <span style={{ fontFamily: 'Parabole' }}>D</span>ISCOV
-                <span style={{ fontFamily: 'Parabole' }}>ER</span> OUR
+              <h1 className="text-[1.9rem] small:text-[2.1rem] pr-4 lg:pr-1 3xl:pr-36 md:text-[3rem] lg:text-[3.5rem] xl:text-[3.3rem] 3xl:text-[4rem] mb-6 leading-none text-black">
+                <div className="whitespace-nowrap">
+                  <span style={{ fontFamily: 'Parabole' }}>D</span>ISCOV
+                  <span style={{ fontFamily: 'Parabole' }}>ER</span> OUR
+                </div>
                 <div className="flex items-center xl:flex-row">
                   <span className="w-8 h-0.5 bg-black inline-block mx-3 align-middle"></span>
                   <span className="italic xl:whitespace-nowrap">GEN AI WORKSHOP</span>

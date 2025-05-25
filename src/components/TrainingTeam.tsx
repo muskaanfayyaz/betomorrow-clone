@@ -23,41 +23,51 @@ const teamMembers = [
 
 export default function TrainingTeam() {
   return (
-    <section className="py-16 text-[#0b0d17] w-full">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <Image
-            src="/your-training-team.png"
-            alt="Your Training Team"
-            width={600}
-            height={450}
-            className="h-auto w-full max-w-md object-contain"
-            priority
-          />
-        </div>
+    <section className="py-8 text-[#0b0d17] w-full">
+      <div className="max-w-6xl mx-auto px-2 lg:px-8">
+        <h1 className="text-[1.7rem] small:text-[2.1rem] pr-3 lg:pr-1 3xl:pr-36 md:text-[3rem] lg:text-[3.5rem] xl:text-[3.3rem] 3xl:text-[4rem] mb-6 leading-none text-black whitespace-normal">
+          <span style={{ fontFamily: 'Parabole' }}>Y</span>OUR
+          <div className="flex items-center flex-row">
+            <span className="w-8 h-0.5 bg-black inline-block mx-3 align-middle"></span>
+            <span className="italic xl:whitespace-nowrap">TRAINING TEAM</span>
+          </div>
+        </h1>
         <p className="text-black mb-12 max-w-xl text-xl sm:text-2xl font-light">
           Our experts who will help you make a real difference in your market.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-4">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center"
+              className="flex flex-col md:flex-row xl:flex-col items-center text-center xl:text-left gap-6"
             >
-              <div className="mb-4 w-full aspect-square max-w-xs sm:max-w-sm md:max-w-md">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={500}
-                  height={500}
-                  className="rounded-3xl w-full h-full object-cover"
-                />
+              {/* Image - 50% width */}
+              <div className="w-full md:w-1/2 lg:w-[40%] xl:w-full">
+                <div className="mb-4 aspect-square max-w-full">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={500}
+                    height={500}
+                    className="rounded-3xl w-full h-full md:h-[22rem] lg:h-[24rem] object-cover"
+                  />
+                </div>
               </div>
-              <div className="w-full">
+
+              {/* Text - 50% width */}
+              <div className="w-full md:w-1/2 lg:w-[60%]">
                 <h3 className="text-xl md:text-2xl font-semibold">{member.name}</h3>
-                <p className="text-base md:text-lg text-black mb-2 font-medium">{member.role}</p>
-                <p className="text-sm md:text-base text-black font-normal leading-relaxed mt-4">
+                <p
+                  style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
+                  className="text-base md:text-lg text-black mb-2 font-medium"
+                >
+                  {member.role}
+                </p>
+                <p
+                  style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
+                  className="text-base md:text-[1.2rem] xl:px-0 text-black font-normal leading-relaxed mt-4"
+                >
                   {member.description}
                 </p>
               </div>
