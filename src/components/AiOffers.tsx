@@ -67,19 +67,19 @@ const offers = [
 
 export default function AiOffers() {
   return (
-    <section className="animated-gradient text-white px-4 md:px-10 pt-16 pb-20">
+    <section className="animated-gradient text-white px-4 md:px-10 xl:px-20 pt-16 pb-20 3xl:px-[38rem] ">
       {/* Top Section */}
-      <div className="flex flex-col md:flex-row items-start gap-12 md:gap-0 lg:gap-12 xl:gap-4 mb-20 mt-12">
-      <h1 className="text-[1.9rem] lg:w-2/5 xl:w-2/4 small:text-[2.1rem] pr-4 lg:pr-1 3xl:pr-36 sm:text-7xl md:text-[4rem] lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-white whitespace-normal">
-  O<span style={{ fontFamily: 'Parabole' }}>UR</span>{' '}AI<br/>
-  <div className='flex items-center'>
-  <span className="w-8 h-0.5 bg-white inline-block mx-3 align-middle"></span>
-  <span className="italic">CUSTOM OFFERS</span>
-  </div>
-</h1>
+      <div className="flex flex-col md:flex-row items-start gap-12 md:gap-0 lg:gap-12 xl:gap-0 3xl:gap-0 mb-20 mt-12">
+        <h1 className="text-[1.9rem] lg:w-2/5 xl:w-2/4 small:text-[2.1rem] pr-4 lg:pr-1 3xl:pr-36 sm:text-7xl md:text-[4rem] lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-white whitespace-normal">
+          O<span style={{ fontFamily: 'Parabole' }}>UR</span>{' '}AI
+          <div className='flex items-center xl:flex-row'>
+            <span className="w-8 h-0.5 bg-white inline-block mx-3 align-middle"></span>
+            <span className="italic xl:whitespace-nowrap">CUSTOM OFFERS</span>
+          </div>
+        </h1>
 
         {/* Text Content */}
-        <div className="w-full text-white/80 text-base small:text-[1.1rem] md:text-lg leading-relaxed">
+        <div className="w-full text-white/80 text-base small:text-[1.1rem] md:text-lg xl:text-2xl  xl:pl-16 leading-relaxed">
           <p>
             Our AI agency offers a range of{' '}
             <span className="underline text-white">artificial intelligence</span> services designed
@@ -91,24 +91,31 @@ export default function AiOffers() {
       </div>
 
       {/* Offers Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 pb-24">
         {offers.map((offer, index) => (
           <div
             key={index}
-            className="relative bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-white p-6 rounded-[22px] shadow-2xl border border-gray-400/50 transition-colors duration-300 hover:border-white min-h-[420px] flex flex-col justify-between"
+            className="relative bg-gradient-to-br py-5 from-[#5f5fa7] via-[#283181] to-[#0F137D] text-white p-6 rounded-[20px] shadow-2xl border border-gray-400/50 transition-colors duration-300 hover:border-white min-h-[420px] md:min-h-[45rem] flex flex-col justify-between"
           >
-            <div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-300">
+            <div className='px-1'>
+              <h3 
+              style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
+              className="text-[1.3rem] md:text-[2rem] mb-3 bg-clip-text text-transparent 3xl:text-[2.4rem] bg-gradient-to-br from-white to-gray-300">
                 {offer.title}
               </h3>
-              <p className="text-sm sm:text-base text-white/70 mb-6">{offer.subtitle}</p>
-              <ul className="space-y-4 text-sm sm:text-base leading-relaxed text-white/80">
+              <p 
+              style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
+              className="px-3 text-base md:text-[1.3rem] 3xl:text-[1.5rem] text-white/70 mb-6">{offer.subtitle}</p>
+              <ul 
+              className="px-4 space-y-4 text-[0.8rem] md:text-[17px] 3xl:text-[1.2rem] leading-relaxed text-white/80">
                 {offer.description.map((item, i) => (
                   <li key={i} className="list-disc list-inside" dangerouslySetInnerHTML={{ __html: item }} />
                 ))}
               </ul>
             </div>
-            <button className="mt-8 w-full flex items-center justify-center gap-2 bg-white text-black text-sm sm:text-base px-6 py-2.5 rounded-full font-medium hover:bg-gray-200 transition">
+            <button 
+            style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
+            className="mt-8 w-full flex items-center justify-center gap-2 bg-white text-black text-sm sm:text-base px-6 py-2.5 rounded-full font-medium hover:bg-gray-200 transition">
               {offer.button} <ArrowRight size={18} />
             </button>
           </div>
