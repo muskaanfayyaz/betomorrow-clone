@@ -21,7 +21,7 @@ const expertiseList = [
     content: `Multi-modal models (LMMs) are technologies that offer an innovative approach
     enabling companies to analyze images, photos, videos and even **handwritten documents** in real time.
     Thanks to the expertise of our AI agency, we are able to harness the power of LMMs to
-    **transform complex data into concrete actions**, tailored to the specific projects and needs of businesses.`,
+    <span class="underline text-white">transform complex data into concrete actions</span>, tailored to the specific projects and needs of businesses.`,
   },
   {
     title: 'Retrieval Augmented Generation (RAG)',
@@ -76,19 +76,20 @@ const ExpertiseSection = () => {
 
         </div>
         {/* Expertise Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+        <div className="small:px-0 small: pb-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
           {expertiseList.map((item, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-xl shadow-xl border border-gray-400/40 hover:border-white transition-colors duration-300 flex flex-col min-h-[340px]"
+              className="bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-[1rem] shadow-xl border-[1.5px] border-gray-200/40 hover:border-white transition-colors duration-300 flex flex-col min-h-[340px]"
             >
               <h3 
               style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
-              className="text-xl sm:text-2xl font-light mb-3 text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-300 line-clamp-2">
+              className="text-[1.5rem] small:text-[1.8rem] md:text-[2rem] lg:text-[2.1rem] font-normal mb-3 text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-300 line-clamp-2">
                 {item.title}
               </h3>
               <p
-                className="text-sm leading-relaxed flex-grow font-light line-clamp-[12]"
+                style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
+                className="text-[0.9rem] small:text-[1rem] md:text-[1.1rem] leading-relaxed flex-grow line-clamp-[12]"
                 dangerouslySetInnerHTML={{
                   __html: item.content.trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
                 }}
