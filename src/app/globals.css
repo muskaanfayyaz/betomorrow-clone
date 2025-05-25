@@ -125,8 +125,10 @@ body {
 
 @font-face {
   font-family: 'Parabole';
-  src: url('/font/Parabole-DisplayRegular.woff2') format('woff2');
+  src: url('/font/Parabole.woff2') format('woff2');
   font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {

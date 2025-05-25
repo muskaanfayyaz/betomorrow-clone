@@ -16,12 +16,17 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
+        'small': '375px',
         'custom-lg': '1024px',
         '3xl': '2560px',
       },
       maxWidth: {
+        'small' : '425px',
         'custom-lg': '1024px',
         '3xl': '3840px',
+      },
+      fontFamily: {
+        parabole: ['Parabole', 'sans-serif'],
       },
       keyframes: {
         slide: {

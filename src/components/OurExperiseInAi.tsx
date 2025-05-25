@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
@@ -53,30 +52,29 @@ const expertiseList = [
 
 const ExpertiseSection = () => {
   return (
-    <section className={`${poppins.className} px-4 sm:px-6 lg:px-12 pt-24 pb-24`}>
+    <section className={`${poppins.className} px-1 sm:px-2 lg:px-5 xl:px-12 pt-24 md:pt-48 pb-24 3xl:px-[35rem]`}>
       <div className="max-w-[1400px] 2xl:max-w-[1920px] 3xl:max-w-[2560px] 4xl:max-w-[3840px] mx-auto">
-        {/* Top Section: Image + Text */}
-        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16 mb-12">
-          {/* Image */}
-          <div className="w-full lg:w-1/2">
-            <Image
-              src="/our-expertise-in-ai.png"
-              alt="AI Expertise Heading"
-              width={1000}
-              height={750}
-              className="w-full h-auto rounded-lg object-cover"
-              priority
-            />
-          </div>
+        <div className='pb-10'>
+          {/* Top Section: Image + Text */}
+        <div className="flex flex-col md:flex-row items-start gap-14 md:gap-[0.5px] lg:gap-0 xl:gap-20 mb-12">
+        <h1 className="text-[2rem] lg:w-2/5 xl:w-2/4 small:text-[2.2rem] pr-4 small:pr-12 lg:pr-1 xl:pr-8 3xl:pr-36 sm:text-7xl md:text-[4rem] lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-white whitespace-normal">
+  OU<span style={{ fontFamily: 'Parabole' }}>R</span>{' '}
+  <span style={{ fontFamily: 'Parabole' }}>E</span>
+  <span style={{ fontFamily: 'Parabole' }}>X</span>PE
+  <span style={{ fontFamily: 'Parabole' }}>R</span>TISES{' '}
+  <span className="w-8 h-1 bg-white inline-block mx-3 align-middle"></span>
+  <span className="italic">IN AI</span>
+</h1>
 
           {/* Text */}
-          <div className="w-full lg:w-1/2 text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+          <div className="w-full lg:w-3/5 xl:2/4 xl:pl-10 text-gray-300 text-base md:text-lg 3xl:text-[1.3rem] 3xl:pt-8 leading-relaxed">
             <p>
               With over 20 years&apos; experience, BeTomorrow has developed recognized digital know-how in the development of digital solutions.Our engineers, with an average of 10 years&apos; experience, excel in the design, deployment and maintenance of tailor-made artificial intelligence solutions.
             </p>
           </div>
         </div>
 
+        </div>
         {/* Expertise Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
           {expertiseList.map((item, index) => (
@@ -84,13 +82,15 @@ const ExpertiseSection = () => {
               key={index}
               className="bg-gradient-to-br from-[#5f5fa7] via-[#283181] to-[#0F137D] text-gray-100 p-6 rounded-xl shadow-xl border border-gray-400/40 hover:border-white transition-colors duration-300 flex flex-col min-h-[340px]"
             >
-              <h3 className="text-xl sm:text-2xl font-light mb-3 text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-300 line-clamp-2">
+              <h3 
+              style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
+              className="text-xl sm:text-2xl font-light mb-3 text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-300 line-clamp-2">
                 {item.title}
               </h3>
               <p
                 className="text-sm leading-relaxed flex-grow font-light line-clamp-[12]"
                 dangerouslySetInnerHTML={{
-                  __html: item.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
+                  __html: item.content.trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'),
                 }}
               />
             </div>
