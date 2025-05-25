@@ -7,44 +7,43 @@ import AIExperts from './AIExperts';
 
 export default function GenAIWorkshop() {
   return (
-    <section className="bg-gradient-to-br from-blue-200 to-white w-full px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 pt-[6rem] md:pt-[8rem]">
+    <section className="bg-gradient-to-br from-blue-200 to-white w-full px-4 sm:px-6 md:px-12 lg:px-10 xl:px-32 pt-[6rem] md:pt-[8rem]">
       <div className="max-w-[100rem] mx-auto">
         {/* Top Section */}
-        <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 items-start">
+        <div className="flex flex-col gap-10 xl:gap-20 3xl:gap-10 xl:grid xl:grid-cols-[40%_60%] xl:items-start">
           {/* Left Image */}
-          <div className="w-full lg:w-[40%] flex items-end">
-            <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[650px] 2xl:h-[700px] rounded-3xl overflow-hidden">
-              <Image
-                src="/formation/formation-1080.jpg"
-                alt="Gen AI Workshop"
-                fill
-                className="object-cover rounded-3xl"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-              />
-            </div>
-          </div>
+          <div className="flex items-end">
+    <div className="relative w-full h-[24rem] small:h-[32rem] md:h-[42rem] lg:h-[44rem] xl:h-[49rem] 3xl:w-[80%] rounded-3xl overflow-hidden">
+      <Image
+        src="/formation/formation-1080.jpg"
+        alt="Gen AI Workshop"
+        fill
+        className="object-cover rounded-3xl"
+        priority
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+      />
+    </div>
+  </div>
 
           {/* Right Content */}
-          <div className="w-full lg:w-[60%] flex flex-col justify-between text-[#1a1a1a]">
+          <div className="flex flex-col justify-between text-[#1a1a1a]">
             <div className="space-y-6">
-              <div className="relative w-full h-auto max-w-3xl">
-                <Image
-                  src="/gen-ai-work.png"
-                  alt="Gen AI Workshop Banner"
-                  width={1600}
-                  height={916}
-                  className="w-full h-auto object-contain"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                />
-              </div>
+              <h1 className="text-[1.9rem] small:text-[2.1rem] pr-4 lg:pr-1 3xl:pr-36 md:text-[3rem] lg:text-[3.5rem] xl:text-[3.3rem] 3xl:text-[4rem] mb-6 leading-none text-black whitespace-normal">
+                <span style={{ fontFamily: 'Parabole' }}>D</span>ISCOV
+                <span style={{ fontFamily: 'Parabole' }}>ER</span> OUR
+                <div className="flex items-center xl:flex-row">
+                  <span className="w-8 h-0.5 bg-black inline-block mx-3 align-middle"></span>
+                  <span className="italic xl:whitespace-nowrap">GEN AI WORKSHOP</span>
+                </div>
+              </h1>
 
-              <p className="text-base md:text-lg xl:text-xl text-black">
+              <p 
+              style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
+              className="text-base md:text-[1.4rem] xl:text-xl text-black">
                 Adapted to all levels and designed to fit your schedule, these sessions help you develop skills and integrate AI into your daily practices.
               </p>
 
-              <p className="text-sm md:text-base xl:text-lg font-semibold text-black">
+              <p className="text-sm md:text-[1.2rem] xl:text-lg font-semibold text-black">
                 A unique, value-added workshop to:
               </p>
 
@@ -68,23 +67,25 @@ export default function GenAIWorkshop() {
                   },
                 ].map((item, i) => (
                   <div key={i}>
-                    <p className="font-medium flex items-start gap-2">
+                    <p className="font-medium flex text-[1.2rem] items-start gap-2">
                       <Check className="text-blue-600 mt-[2px]" size={20} />
                       <span>{item.title}</span>
                     </p>
-                    <p className="pl-6">: {item.description}</p>
+                    <p 
+                    style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
+                    className="pl-6 text-[1.1rem]">: {item.description}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <button className="bg-[#001f3f] text-white px-6 py-3 xl:px-8 xl:py-4 rounded-full flex items-center gap-2 hover:bg-[#003366] transition text-sm md:text-base xl:text-lg">
-                Get more information <ArrowRight size={20} />
-              </button>
-              <button className="border border-[#001f3f] text-[#001f3f] px-6 py-3 xl:px-8 xl:py-4 rounded-full flex items-center gap-2 hover:bg-[#001f3f]/5 transition text-sm md:text-base xl:text-lg">
-                Download our presentation <ArrowRight size={20} />
+            <div className="flex-row sm:flex-row gap-4 mt-8">
+              <button className="w-fit pr-3 h-[3.5rem] bg-[#001f3f] text-white pl-4 py-2 xl:pl-6 xl:py-3 rounded-full flex items-center hover:bg-[#003366] transition text-sm md:text-base xl:text-lg whitespace-nowrap">
+                Get more information <ArrowRight size={18} className="ml-1 flex-shrink-0" />
+              </button><br/>
+              <button className="w-fit pr-3 h-[3.5rem] border border-[#001f3f] text-[#001f3f] pl-4 py-2 xl:pl-6 xl:py-3 rounded-full flex items-center hover:bg-[#001f3f]/5 transition text-sm md:text-base xl:text-lg whitespace-nowrap">
+                Download our presentation <ArrowRight size={18} className="ml-1 flex-shrink-0" />
               </button>
             </div>
           </div>
