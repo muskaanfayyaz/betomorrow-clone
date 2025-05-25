@@ -36,14 +36,14 @@ export default function TrainingTeam() {
           Our experts who will help you make a real difference in your market.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-4">
+        <div className="grid grid-cols-1 gap-5 lg:gap-4">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="flex flex-col md:flex-row xl:flex-col items-center text-center xl:text-left gap-6"
+              className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left md:gap-8"
             >
               {/* Image - 50% width */}
-              <div className="w-full md:w-1/2 lg:w-[40%] xl:w-full">
+              <div className="w-full md:w-1/2 lg:w-[40%]">
                 <div className="mb-4 aspect-square max-w-full">
                   <Image
                     src={member.image}
@@ -66,7 +66,7 @@ export default function TrainingTeam() {
                 </p>
                 <p
                   style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
-                  className="text-base md:text-[1.2rem] xl:px-0 text-black font-normal leading-relaxed mt-4"
+                  className="text-base md:text-[1.2rem] text-black font-normal leading-relaxed mt-4"
                 >
                   {member.description}
                 </p>
