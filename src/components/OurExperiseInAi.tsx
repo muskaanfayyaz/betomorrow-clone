@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import * as React from 'react';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({

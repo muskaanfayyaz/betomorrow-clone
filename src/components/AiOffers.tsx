@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 const offers = [
@@ -71,17 +70,14 @@ export default function AiOffers() {
     <section className="animated-gradient text-white px-4 sm:px-8 md:px-20 pt-16 pb-20">
       {/* Top Section */}
       <div className="flex flex-col md:flex-row items-start gap-12 md:gap-20 mb-20 mt-12">
-        {/* Image */}
-        <div className="w-full md:w-1/2">
-          <Image
-            src="/ai-offer.png"
-            alt="Our AI Custom Offers"
-            width={600}
-            height={550}
-            className="h-auto w-full"
-            priority
-          />
-        </div>
+      <h1 className="text-[2rem] lg:w-2/5 xl:w-2/4 small:text-[2.2rem] pr-4 small:pr-12 lg:pr-1 xl:pr-8 3xl:pr-36 sm:text-7xl md:text-[4rem] lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-white whitespace-normal">
+  OU<span style={{ fontFamily: 'Parabole' }}>R</span>{' '}
+  <span style={{ fontFamily: 'Parabole' }}>E</span>
+  <span style={{ fontFamily: 'Parabole' }}>X</span>PE
+  <span style={{ fontFamily: 'Parabole' }}>R</span>TISES{' '}
+  <span className="w-8 h-1 bg-white inline-block mx-3 align-middle"></span>
+  <span className="italic">IN AI</span>
+</h1>
 
         {/* Text Content */}
         <div className="w-full md:w-1/2 text-white/80 text-sm sm:text-base md:text-lg leading-relaxed">
