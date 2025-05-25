@@ -67,20 +67,19 @@ const offers = [
 
 export default function AiOffers() {
   return (
-    <section className="animated-gradient text-white px-4 sm:px-8 md:px-20 pt-16 pb-20">
+    <section className="animated-gradient text-white px-4 md:px-10 pt-16 pb-20">
       {/* Top Section */}
-      <div className="flex flex-col md:flex-row items-start gap-12 md:gap-20 mb-20 mt-12">
-      <h1 className="text-[2rem] lg:w-2/5 xl:w-2/4 small:text-[2.2rem] pr-4 small:pr-12 lg:pr-1 xl:pr-8 3xl:pr-36 sm:text-7xl md:text-[4rem] lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-white whitespace-normal">
-  OU<span style={{ fontFamily: 'Parabole' }}>R</span>{' '}
-  <span style={{ fontFamily: 'Parabole' }}>E</span>
-  <span style={{ fontFamily: 'Parabole' }}>X</span>PE
-  <span style={{ fontFamily: 'Parabole' }}>R</span>TISES{' '}
-  <span className="w-8 h-1 bg-white inline-block mx-3 align-middle"></span>
-  <span className="italic">IN AI</span>
+      <div className="flex flex-col md:flex-row items-start gap-12 md:gap-0 lg:gap-12 xl:gap-4 mb-20 mt-12">
+      <h1 className="text-[1.9rem] lg:w-2/5 xl:w-2/4 small:text-[2.1rem] pr-4 lg:pr-1 3xl:pr-36 sm:text-7xl md:text-[4rem] lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-white whitespace-normal">
+  O<span style={{ fontFamily: 'Parabole' }}>UR</span>{' '}AI<br/>
+  <div className='flex items-center'>
+  <span className="w-8 h-0.5 bg-white inline-block mx-3 align-middle"></span>
+  <span className="italic">CUSTOM OFFERS</span>
+  </div>
 </h1>
 
         {/* Text Content */}
-        <div className="w-full md:w-1/2 text-white/80 text-sm sm:text-base md:text-lg leading-relaxed">
+        <div className="w-full text-white/80 text-base small:text-[1.1rem] md:text-lg leading-relaxed">
           <p>
             Our AI agency offers a range of{' '}
             <span className="underline text-white">artificial intelligence</span> services designed
