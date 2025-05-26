@@ -24,7 +24,7 @@ const teamMembers = [
 export default function TrainingTeam() {
   return (
     <section className="py-8 text-[#0b0d17] w-full">
-      <div className="max-w-6xl mx-auto px-2 lg:px-8">
+      <div className="max-w-6xl mx-auto px-2 lg:px-8 xl:px-0">
         <h1 className="text-[1.7rem] small:text-[2.1rem] pr-3 lg:pr-1 3xl:pr-36 md:text-[3rem] lg:text-[3.5rem] xl:text-[3.3rem] 3xl:text-[4rem] mb-6 leading-none text-black whitespace-normal">
           <span style={{ fontFamily: 'Parabole' }}>Y</span>OUR
           <div className="flex items-center flex-row">
@@ -32,31 +32,31 @@ export default function TrainingTeam() {
             <span className="italic xl:whitespace-nowrap">TRAINING TEAM</span>
           </div>
         </h1>
-        <p className="text-black  mb-12 max-w-xl text-xl sm:text-2xl font-light">
+        <p className="text-black mb-12 max-w-xl text-xl sm:text-[1.4rem] font-light">
           Our experts who will help you make a real difference in your market.
         </p>
 
-        <div className="grid grid-cols-1 gap-5 lg:gap-4">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-4 xl:gap-3">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left md:gap-8"
+              className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left xl:flex-col xl:items-center xl:text-center md:gap-8"
             >
-              {/* Image - 50% width */}
-              <div className="w-full md:w-1/2 lg:w-[40%]">
+              {/* Image */}
+              <div className="w-full md:w-1/2 lg:w-[40%] xl:w-[90%]">
                 <div className="mb-4 aspect-square max-w-full">
                   <Image
                     src={member.image}
                     alt={member.name}
                     width={500}
                     height={500}
-                    className="rounded-3xl w-full h-full md:h-[22rem] lg:h-[24rem] object-cover"
+                    className="rounded-3xl w-full h-full md:h-[22rem] lg:h-[24rem] xl:h-[22rem] object-cover"
                   />
                 </div>
               </div>
 
-              {/* Text - 50% width */}
-              <div className="w-full md:w-1/2 lg:w-[60%]">
+              {/* Text */}
+              <div className="w-full md:w-1/2 lg:w-[60%] xl:w-[85%]">
                 <h3 className="text-xl md:text-2xl font-semibold text-left">{member.name}</h3>
                 <p
                   style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
