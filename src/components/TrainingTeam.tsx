@@ -32,7 +32,7 @@ export default function TrainingTeam() {
             <span className="italic xl:whitespace-nowrap">TRAINING TEAM</span>
           </div>
         </h1>
-        <p className="text-black mb-12 max-w-xl text-xl sm:text-2xl font-light">
+        <p className="text-black  mb-12 max-w-xl text-xl sm:text-2xl font-light">
           Our experts who will help you make a real difference in your market.
         </p>
 
@@ -57,16 +57,16 @@ export default function TrainingTeam() {
 
               {/* Text - 50% width */}
               <div className="w-full md:w-1/2 lg:w-[60%]">
-                <h3 className="text-xl md:text-2xl font-semibold">{member.name}</h3>
+                <h3 className="text-xl md:text-2xl font-semibold text-left">{member.name}</h3>
                 <p
                   style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
-                  className="text-base md:text-lg text-black mb-2 font-medium"
+                  className="text-base md:text-lg text-left text-black mb-2 font-medium"
                 >
                   {member.role}
                 </p>
                 <p
                   style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
-                  className="text-base md:text-[1.2rem] text-black font-normal leading-relaxed mt-4"
+                  className="text-base md:text-[1.2rem] text-left text-black font-normal leading-relaxed mt-4"
                 >
                   {member.description}
                 </p>

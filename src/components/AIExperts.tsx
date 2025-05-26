@@ -15,31 +15,28 @@ const experts = [
 export default function AIExperts() {
   return (
     <section className="relative mt-20 pb-24 overflow-hidden w-full">
-      {/* Left-aligned heading image */}
-      <div className="mb-12 px-4 sm:px-6 lg:px-12 xl:px-24">
-        <Image
-          src="/all-our-ai-expert.png"
-          alt="AI Experts"
-          width={600}
-          height={400}
-          className="h-auto object-contain"
-          priority
-        />
-      </div>
+      {/* Heading */}
+      <h1 className="mx-auto text-[1.7rem] pl:2 small:pl-3 small:text-[2.1rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[3.5rem] 3xl:text-[4rem] mb-6 leading-none text-black">
+        ALL OUR
+        <div className="flex items-center">
+          <span className="w-8 h-0.5 bg-black inline-block mx-3 align-middle"></span>
+          <span className="italic whitespace-nowrap">AI EXPERTS</span>
+        </div>
+      </h1>
 
-      {/* Auto-scrolling track */}
+      {/* Auto-scrolling images */}
       <div className="w-full overflow-hidden">
-        <div className="flex gap-6 w-[200%] animate-slide">
+        <div className="flex gap-6 animate-slide">
           {[...experts, ...experts].map((src, index) => (
             <div
               key={index}
-              className="min-w-[160px] sm:min-w-[200px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[300px] h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] xl:h-[400px] relative flex-shrink-0 rounded-2xl overflow-hidden"
+              className="min-w-[160px] small:min-w-[220px] md:min-w-[240px] lg:min-w-[280px] xl:min-w-[340px] h-[240px] small:h-[280px] md:h-[320px] lg:h-[360px] xl:h-[450px] relative flex-shrink-0 rounded-2xl overflow-hidden"
             >
               <Image
                 src={src}
                 alt={`AI Expert ${index + 1}`}
                 fill
-                className="object-cover rounded-2xl"
+                className="object-cover rounded-[2rem]"
               />
             </div>
           ))}
