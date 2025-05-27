@@ -8,44 +8,40 @@ export default function HomeFooterSection() {
   const [email, setEmail] = useState('');
 
   return (
-    <section className="bg-gradient-to-b from-[#e5ecf9] to-[#eaf1ff] text-black px-6 py-12 md:px-20 md:py-20 relative overflow-hidden max-w-[2560px] mx-auto">
+    <section className="bg-gradient-to-b from-[#e5ecf9] to-[#eaf1ff] text-black px-6 py-12 md:px-12 md:py-20 relative overflow-hidden max-w-[2560px] mx-auto">
       {/* Newsletter form */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-12 border-b border-gray-400 pb-12">
-        <div className="w-full md:w-1/2 max-w-[600px]">
-          <Image
-            src="/get-shortcut.png"
-            alt="Get ShortCut"
-            width={500}
-            height={300}
-            className="w-full h-auto max-w-[500px] md:max-w-none"
-            priority
-          />
-          <p className="text-sm mt-2 font-medium">
-            A compilation of best practices in digital innovation
-          </p>
-          <p className="text-sm text-gray-700">
-            Shortcut is Betomorrow&apos;s quarterly newsletter
-          </p>
+      <div className="flex flex-col lg:flex-col xl:flex-row justify-between items-start gap-10 mb-12 border-b border-gray-400 pb-12">
+        <div className="w-full lg:w-1/2 max-w-[600px]">
+          <h1 className="text-left text-[2.3rem] small:text-[2.8rem] md:text-[3.1rem] lg:text-[3.2rem] xl:text-[3.5rem] 3xl:text-[4rem] leading-tight mb-6 text-black">
+            GET
+            <div className="flex items-center mt-2">
+              <span className="w-8 h-0.5 bg-black mr-3"></span>
+              <span className="italic font-normal">SHORTCUT</span>
+            </div>
+          </h1>
+          <p className="text-base md:text-[1.3rem] mt-2 font-semibold">A compilation of best practices in digital innovation</p>
+          <p className="text-[0.9rem] md:text-[1.3rem] text-gray-700">Shortcut is Betomorrow&apos;s quarterly newsletter</p>
         </div>
-        <form className="flex flex-col gap-4 w-full md:w-auto max-w-[400px]">
+
+        <form className="flex flex-col xl:flex-row gap-4 w-full max-w-[800px]">
           <input
             type="text"
             placeholder="Your name"
-            className="rounded-full px-5 py-3 text-sm outline-none w-full"
+            className="rounded-full italic px-5 py-5 text-sm outline-none w-full"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <div className="flex items-center rounded-full bg-white overflow-hidden">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center rounded-full w-full bg-white overflow-hidden">
             <input
               type="email"
               placeholder="Your e-mail"
-              className="flex-grow px-5 py-3 text-sm outline-none bg-transparent"
+              className="flex-grow px-5 py-5 text-sm outline-none bg-transparent w-full"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <button
               type="submit"
-              className="bg-gray-300 px-4 py-2 text-sm font-medium mx-2 rounded-full whitespace-nowrap"
+              className="bg-gray-300 px-6 py-4 text-base font-medium rounded-full whitespace-nowrap mt-2 sm:mt-0"
             >
               Confirm →
             </button>
@@ -54,26 +50,18 @@ export default function HomeFooterSection() {
       </div>
 
       {/* Section Wrapper */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
-        {/* Build Tomorrow Image */}
-        <div className="w-full md:w-1/2 mb-4 md:mb-0 pr-0 md:pr-24 max-w-full md:max-w-[900px]">
-          <Image
-            src="/build-tomorrow-together.png"
-            alt="Let's Build Tomorrow Together"
-            width={900}
-            height={500}
-            className="w-full h-auto"
-            priority
-          />
-        </div>
+      <div className="flex flex-col lg:flex-col justify-between items-start gap-10 mb-12">
+        {/* Heading */}
+        <h1 className="text-left text-[2.5rem] small:text-[2.8rem] md:text-[4.5rem] lg:text-[4.9rem] xl:text-[3.5rem] 3xl:text-[4rem] leading-tight text-black w-full lg:w-1/2 max-w-[600px]">
+          <span style={{ fontFamily: 'Parabole' }}>LET&apos;S BUILD TOMORROW TOGETHER</span>
+        </h1>
 
-        {/* Links & Button Section */}
-        <div className="w-full md:w-1/2 flex flex-col justify-between h-full max-w-[600px]">
-          <div className="grid grid-cols-2 gap-8 text-sm flex-grow">
-            {/* Pages */}
+        {/* Links and CTA */}
+        <div className="w-full max-w-[600px] flex flex-col justify-between h-full">
+          <div className="grid grid-cols-2 gap-y-1 gap-x-4 text-sm">
             <div>
-              <h4 className="font-semibold mb-2">PAGES</h4>
-              <ul className="space-y-4 text-[15px]">
+              <h4 className="font-normal text-[1.3rem] mb-2">PAGES</h4>
+              <ul className="space-y-2 text-[1.1rem]">
                 <li>Our vision</li>
                 <li>Projects</li>
                 <li>Team</li>
@@ -81,42 +69,25 @@ export default function HomeFooterSection() {
                 <li>Join us</li>
               </ul>
             </div>
-
-            {/* Follow Us */}
             <div>
-              <h4 className="font-semibold mb-2">FOLLOW US</h4>
-              <ul className="space-y-4 text-[15px]">
-                <li>
-                  <a href="#" className="hover:underline">
-                    LinkedIn ↗
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Dribbble ↗
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Instagram ↗
-                  </a>
-                </li>
+              <h4 className="font-normal text-[1.3rem] mb-2">FOLLOW US</h4>
+              <ul className="space-y-2 text-[1.1rem]">
+                <li><a href="#" className="hover:underline">LinkedIn ↗</a></li>
+                <li><a href="#" className="hover:underline">Dribbble ↗</a></li>
+                <li><a href="#" className="hover:underline">Instagram ↗</a></li>
               </ul>
             </div>
           </div>
-
-          {/* CTA Button aligned bottom-right */}
-          <div className="flex justify-end mt-auto pt-6 text-right">
-            <button className="bg-[#0a1e40] text-white px-6 py-3 rounded-full text-sm hover:bg-[#123060] whitespace-nowrap">
+          <div className="flex justify-end mt-6">
+            <button className="bg-[#0a1e40] text-white px-6 py-4 rounded-full text-base hover:bg-[#123060] whitespace-nowrap">
               Let&apos;s talk about it →
             </button>
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 items-center text-xs text-gray-500 border-t border-gray-300 pt-6 text-center gap-4 max-w-[1200px] mx-auto">
-        {/* Logo */}
+      {/* Bottom Footer */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center text-xs text-gray-500 border-t border-gray-300 pt-6 text-center max-w-[1200px] mx-auto">
         <div className="flex justify-center">
           <Image
             src="/black-logo.png"
@@ -127,22 +98,12 @@ export default function HomeFooterSection() {
             priority
           />
         </div>
-
-        {/* Legal Notice */}
         <div className="flex justify-center items-center">
-          <a href="#" className="hover:underline whitespace-nowrap">
-            LEGAL NOTICE
-          </a>
+          <a href="#" className="hover:underline whitespace-nowrap">LEGAL NOTICE</a>
         </div>
-
-        {/* Privacy Policy */}
         <div className="flex justify-center items-center">
-          <a href="#" className="hover:underline whitespace-nowrap">
-            PRIVACY POLICY
-          </a>
+          <a href="#" className="hover:underline whitespace-nowrap">PRIVACY POLICY</a>
         </div>
-
-        {/* Copyright */}
         <div className="flex justify-center items-center whitespace-nowrap">
           <span>2025 © BETOMORROW</span>
         </div>
