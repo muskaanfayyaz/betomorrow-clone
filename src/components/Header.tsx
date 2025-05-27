@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Sparkles, Menu, X } from 'lucide-react';
+import { ChevronDown, Sparkles, Menu} from 'lucide-react';
 import Image from 'next/image';
 
 const agencyItems = [
@@ -36,7 +36,14 @@ const industriesItems = [
 export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<'agency' | 'expertise' | 'industries' | null>(null);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'fr'>('en');
+  const [language, setLanguage] = useState<'en' | 'fr'>(() => {
+    // Check if language is stored in localStorage
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('preferredLanguage');
+      return (savedLang === 'fr' || savedLang === 'en') ? savedLang : 'en';
+    }
+    return 'en';
+  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleDropdown = (name: typeof openDropdown) => {
@@ -47,6 +54,10 @@ export default function Header() {
   const selectLanguage = (lang: 'en' | 'fr') => {
     setLanguage(lang);
     setLangDropdownOpen(false);
+    // Save language preference to localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferredLanguage', lang);
+    }
   };
 
   let dropdownItems = null;
@@ -55,7 +66,7 @@ export default function Header() {
   else if (openDropdown === 'expertise') dropdownItems = expertiseItems;
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50 bg-transparent">
+    <div className="w-full fixed top-3 left-0 z-50 bg-transparent">
       {/* Logo */}
       <div className="absolute top-4 left-6 flex items-center z-50">
         <Link href="/" className="flex items-center">
@@ -64,35 +75,35 @@ export default function Header() {
             alt="Logo"
             width={160}
             height={160}
-            className="object-contain hidden xl:block"
+            className="object-contain hidden lg:hidden xl:block"
             priority
           />
-          <Image
+          {/* <Image
             src="/logo.png"
             alt="Logo"
             width={120}
             height={120}
-            className="object-contain hidden lg:block xl:hidden"
+            className="object-contain hidden lg:block 2xl:hidden"
             priority
-          />
+          /> */}
           <Image
             src="/logos/logo-2.png"
             alt="Mobile Logo"
             width={40}
             height={40}
-            className="object-contain lg:hidden"
+            className="object-contain xl:hidden"
             priority
           />
         </Link>
       </div>
 
       {/* Mobile Menu Icon */}
-      <div className="absolute top-4 right-6 lg:hidden z-50">
+      <div className="absolute top-4 right-6 xl:hidden z-50">
         <button 
-          onClick={() => setMobileMenuOpen(true)} 
-          className="p-2 text-white"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+          className="p-2"
         >
-          <Menu className="w-6 h-6" />
+          <Menu className={`w-6 h-6 lg:w-8 lg:h-8 transition-colors ${mobileMenuOpen ? 'text-[#13119E]' : 'text-white'}`} />
         </button>
       </div>
 
@@ -106,7 +117,7 @@ export default function Header() {
           />
           
           {/* Slidebar */}
-          <div className="absolute top-0 right-0 h-full w-full bg-white shadow-xl">
+          <div className="absolute top-2 right-0 h-full w-full bg-white shadow-xl">
             <div className="h-full flex flex-col overflow-y-auto">
               {/* Header */}
               <div className="flex justify-between items-center p-6 border-b sticky top-0 bg-white z-10">
@@ -124,7 +135,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)} 
                   className="p-2 rounded-full hover:bg-gray-100"
                 >
-                  <X className="w-6 h-6 text-gray-600" />
+                  <Menu className="w-6 h-6 text-[#13119E]" />
                 </button>
               </div>
               
@@ -135,19 +146,19 @@ export default function Header() {
                 <MobileDropdown title="Expertise" items={expertiseItems} />
                 <Link 
                   href="/our-projects" 
-                  className="block py-3 text-gray-800 font-medium border-b border-gray-100"
+                  className="block py-4 text-gray-800 font-medium border-b border-gray-100 text-base lg:text-lg"
                 >
                   Our Projects
                 </Link>
                 <Link 
                   href="/resources" 
-                  className="block py-3 text-gray-800 font-medium border-b border-gray-100"
+                  className="block py-4 text-gray-800 font-medium border-b border-gray-100 text-base lg:text-lg"
                 >
                   Resources
                 </Link>
                 <Link 
                   href="/lets-talk-ai" 
-                  className="block py-3 font-semibold border-b border-gray-100"
+                  className="block py-3 font-semibold border-b border-gray-100 text-base lg:text-lg"
                   style={{ 
                     background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
                     WebkitBackgroundClip: 'text',
@@ -170,30 +181,34 @@ export default function Header() {
                   <div className="relative flex-1">
                     <button
                       onClick={toggleLangDropdown}
-                      className="w-full rounded-3xl px-6 py-3 bg-gray-100 text-gray-800 font-medium shadow-sm flex items-center justify-center gap-2 hover:bg-gray-200 text-sm"
+                      className="w-full rounded-3xl px-6 py-3 bg-gray-100 text-gray-800 font-medium shadow-sm flex items-center justify-center gap-2 hover:bg-gray-200 text-sm min-w-[48px]"
                     >
                       {language.toUpperCase()}
                       <ChevronDown className={`w-4 h-4 transition-transform ${langDropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
                     </button>
+
                     {langDropdownOpen && (
-                      <div className="absolute bottom-full left-0 mb-2 w-full bg-white border border-gray-200 rounded-full shadow-lg z-50 overflow-hidden">
+                      <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-gray-200 rounded-b-[60px] shadow-lg z-50 overflow-hidden">
                         <ul>
-                          <li>
-                            <button
-                              onClick={() => selectLanguage('en')}
-                              className="block w-full text-center px-4 py-2 hover:bg-blue-100 text-sm text-gray-800"
-                            >
-                              EN
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => selectLanguage('fr')}
-                              className="block w-full text-center px-4 py-2 hover:bg-blue-100 text-sm text-gray-800"
-                            >
-                              FR
-                            </button>
-                          </li>
+                          {language === 'en' ? (
+                            <li>
+                              <button
+                                onClick={() => selectLanguage('fr')}
+                                className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                              >
+                                FR
+                              </button>
+                            </li>
+                          ) : (
+                            <li>
+                              <button
+                                onClick={() => selectLanguage('en')}
+                                className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                              >
+                                EN
+                              </button>
+                            </li>
+                          )}
                         </ul>
                       </div>
                     )}
@@ -206,18 +221,18 @@ export default function Header() {
       )}
 
       {/* Right Buttons */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden lg:flex items-center gap-3 h-[48px] z-50">
+      <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden xl:flex items-center gap-3 h-[64px] z-50">
         <Link
           href="/start-your-project"
-          className="rounded-full px-6 py-2 text-xs lg:text-sm bg-[#13119E] text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[40px] lg:h-[48px] flex items-center leading-[1.5rem]"
+          className="rounded-full px-6 py-2 text-xs lg:text-base bg-[#13119E] text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[56px] lg:h-[64px] flex items-center leading-[1.5rem]"
         >
           Start Your Project
         </Link>
 
-        <div className="relative h-[40px] lg:h-[48px] flex items-center">
+        <div className="relative h-[56px] lg:h-[64px] flex items-center">
           <button
             onClick={toggleLangDropdown}
-            className="rounded-full px-4 py-2 bg-white text-gray-800 font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-xs lg:text-sm h-full leading-[1.5rem]"
+            className="rounded-full px-4 py-2 bg-white text-gray-800 font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-xs lg:text-sm h-full leading-[1.5rem] min-w-[48px]"
             type="button"
             aria-haspopup="true"
             aria-expanded={langDropdownOpen}
@@ -227,24 +242,27 @@ export default function Header() {
           </button>
 
           {langDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-20 bg-white border border-gray-200 rounded-3xl shadow-lg z-50 overflow-hidden">
+            <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-gray-200 rounded-b-[60px] shadow-lg z-50 overflow-hidden">
               <ul>
-                <li>
-                  <button
-                    onClick={() => selectLanguage('en')}
-                    className="block w-full text-center px-3 py-1.5 hover:bg-blue-100 text-xs lg:text-sm text-gray-800"
-                  >
-                    EN
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => selectLanguage('fr')}
-                    className="block w-full text-center px-3 py-1.5 hover:bg-blue-100 text-xs lg:text-sm text-gray-800"
-                  >
-                    FR
-                  </button>
-                </li>
+                {language === 'en' ? (
+                  <li>
+                    <button
+                      onClick={() => selectLanguage('fr')}
+                      className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                    >
+                      FR
+                    </button>
+                  </li>
+                ) : (
+                  <li>
+                    <button
+                      onClick={() => selectLanguage('en')}
+                      className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                    >
+                      EN
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
           )}
@@ -252,14 +270,14 @@ export default function Header() {
       </div>
 
       {/* Header Navbar */}
-      <header className="bg-transparent py-1 shadow-sm relative z-40 hidden lg:block">
+      <header className="bg-transparent py-1 shadow-sm relative z-40 hidden xl:block">
         <div
-          className={`ml-36 lg:ml-48 mx-auto w-[62vw] max-w-4xl px-4 py-2 border border-gray-200 bg-white text-xs lg:text-sm transition-all duration-300 ease-in-out ${
+          className={`mx-auto w-[45vw] max-w-5xl px-0 py-3 border border-gray-200 bg-white text-xs lg:text-sm transition-all duration-300 ease-in-out ${
             openDropdown ? 'rounded-t-[50px]' : 'rounded-full'
           }`}
         >
           {/* Navigation Links */}
-          <div className="flex items-center justify-center gap-2 lg:gap-3 font-medium w-full">
+          <div className="flex items-center justify-center gap-2 lg:gap-3 font-medium w-full px-0">
             <button
               onClick={() => toggleDropdown('agency')}
               className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
@@ -286,7 +304,7 @@ export default function Header() {
 
             <button
               onClick={() => toggleDropdown('expertise')}
-              className="flex items-center gap-1 px-2 py-1 text-black rounded-full hover:bg-blue-100 transition"
+              className="flex items-center gap-1 px-1 py-1 text-black rounded-full hover:bg-blue-100 transition"
               type="button"
               aria-haspopup="true"
               aria-expanded={openDropdown === 'expertise'}
@@ -299,7 +317,7 @@ export default function Header() {
 
             <Link
               href="/lets-talk-ai"
-              className="px-3 lg:px-4 py-1 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-1 lg:gap-2"
+              className="px-0 lg:px-0 py-1 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-1 lg:gap-2"
               style={{
                 background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
                 WebkitBackgroundClip: 'text',
@@ -314,14 +332,14 @@ export default function Header() {
           {/* Dropdown menu */}
           {openDropdown && dropdownItems && (
             <div
-              className="absolute left-0 top-full w-full bg-white border-t border-gray-200 pt-3 pb-4 rounded-b-[60px] grid grid-cols-2 gap-3"
+              className="absolute left-1/2 -translate-x-1/2 top-full w-[45vw] max-w-5xl bg-white border-t border-gray-200 pt-3 pb-4 rounded-b-[60px] grid grid-cols-2 gap-3"
               style={{ marginTop: '-4px', zIndex: 10 }}
             >
               {dropdownItems.map((item, idx) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="flex items-center gap-2 px-4 py-2 text-xs lg:text-sm text-gray-800 hover:bg-blue-50 rounded-md transition"
+                  className="flex items-center gap-2 px-0 py-2 text-xs lg:text-sm text-gray-800 hover:bg-blue-50 rounded-md transition"
                 >
                   <Image
                     src={`/${String(idx + 1).padStart(2, '0')}.png`}
@@ -338,12 +356,39 @@ export default function Header() {
           )}
         </div>
       </header>
+
+      {/* Additional language dropdown for mobile */}
+      {langDropdownOpen && (
+        <div className="hidden lg:hidden absolute bottom-full left-0 mb-2 w-[48px] bg-white border border-gray-200 rounded-b-[60px] shadow-lg z-50 overflow-hidden">
+          <ul>
+            {language === 'en' ? (
+              <li>
+                <button
+                  onClick={() => selectLanguage('fr')}
+                  className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                >
+                  FR
+                </button>
+              </li>
+            ) : (
+              <li>
+                <button
+                  onClick={() => selectLanguage('en')}
+                  className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                >
+                  EN
+                </button>
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
 
 const NavLink = ({ href, label }: { href: string; label: string }) => (
-  <Link href={href} className="px-2 lg:px-3 py-1 rounded-full text-black hover:bg-blue-100 transition text-xs lg:text-sm">
+  <Link href={href} className="px-0 lg:px-0 py-1 rounded-full text-black hover:bg-blue-100 transition text-xs lg:text-sm">
     {label}
   </Link>
 );
@@ -354,10 +399,10 @@ const MobileDropdown = ({ title, items }: { title: string; items: { href: string
     <div className="border-b border-gray-100">
       <button 
         onClick={() => setOpen(!open)} 
-        className="w-full flex justify-between items-center py-3 text-gray-800 font-semibold"
+        className="w-full flex justify-between items-center py-3 text-gray-800 font-semibold text-base lg:text-lg"
       >
         <span>{title}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
+        <ChevronDown className={`w-4 h-4 lg:w-5 lg:h-5 transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </button>
       {open && (
         <ul className="pl-4 space-y-2 pb-3">
@@ -365,14 +410,14 @@ const MobileDropdown = ({ title, items }: { title: string; items: { href: string
             <li key={item.href}>
               <Link 
                 href={item.href} 
-                className="flex items-center gap-3 py-2 text-sm text-gray-700 hover:text-blue-600"
+                className="flex items-center gap-3 py-2 text-sm lg:text-base text-gray-700 hover:text-blue-600"
               >
                 <Image
                   src={`/${String(idx + 1).padStart(2, '0')}.png`}
                   alt={`Number ${idx + 1}`}
                   width={20}
                   height={20}
-                  className="flex-shrink-0"
+                  className="flex-shrink-0 lg:w-6 lg:h-6"
                 />
                 {item.label}
               </Link>
