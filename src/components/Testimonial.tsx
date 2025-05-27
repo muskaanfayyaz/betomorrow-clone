@@ -6,13 +6,13 @@ const Testimonial = () => {
     <section className="bg-gradient-to-br from-blue-100 to-white py-20 px-4 md:px-5 lg:px-20 xl:px-28 2xl:px-40">
       <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center gap-12 xl:gap-36">
         {/* Image Section */}
-        <div className="w-full max-w-[18rem] small:max-w-[19rem] md:max-w-[21rem] lg:max-w-xs xl:max-w-sm flex-shrink-0">
+        <div className="w-full max-w-[12.6rem] small:max-w-[18rem] md:max-w-[21rem] lg:max-w-xs xl:max-w-sm flex-shrink-0">
           <Image
             src="/people/Aure_lien_Braud_-_TBM_-_Keolis_-_Bordeaux-3840.jpeg"
             alt="Aurélien Braud"
             width={300}
-            height={300}
-            className="w-full h-auto rounded-[40px] object-cover"
+            height={400}
+            className="w-full h-[310px] small:h-[325px] md:h-auto rounded-[1.9rem] object-cover"
           />
         </div>
 
