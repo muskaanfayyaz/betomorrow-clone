@@ -123,9 +123,9 @@ export default function Header() {
               <div className="flex justify-between items-center p-6 border-b sticky top-0 bg-white z-10">
                 <Link href="/" className="flex items-center">
                   <Image
-                    src="/logo.png"
+                    src="/logos/blue-logo-1.png"
                     alt="Logo"
-                    width={120}
+                    width={40}
                     height={40}
                     className="object-contain"
                     priority
@@ -164,7 +164,7 @@ export default function Header() {
                   style={{ 
                     fontFamily: 'PPNeueMontreal',
                     fontWeight: 500,
-                    background: 'linear-gradient(90deg, #27408B 0%, #FF802B 100%)',
+                    background: 'linear-gradient(90deg, #27408B 0%, #27408B 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent'
                   }}
