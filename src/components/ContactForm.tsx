@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { Paperclip } from 'lucide-react';
 
 export default function ContactForm() {
@@ -9,19 +8,19 @@ export default function ContactForm() {
   const [wantsNDA, setWantsNDA] = useState(false);
 
   return (
-    <section className="animated-gradient min-h-screen text-white pt-16 pb-16 lg:pb-8 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-48 3xl:px-64 4xl:px-96">
-      <div className="w-full max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+    <section className="animated-gradient text-white py-16 px-4 md:px-10 lg:px-12">
+      <div className="max-w-screen-xl mx-auto grid grid-cols-1 xl:grid-cols-2 gap-12 items-start">
         {/* Left Side Image */}
         <div className="flex flex-col justify-center md:justify-start pt-16 px-2 sm:px-4 md:px-0">
-          <Image
-            src="/entrust-ai-project.png"
-            alt="Entrust Your AI Project"
-            width={700}
-            height={420}
-            className="w-full h-auto max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[700px]"
-            priority
-          />
-          <p className="mt-6 text-lg font-light">
+          <h1 className="text-[2rem] small:text-[2.2rem] md:text-[3.5rem] small:pr-[4rem] 3xl:pr-36 sm:text-7xl lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-white whitespace-nowrap">
+            EN<span style={{ fontFamily: 'Parabole' }}>TR</span>UST{' '}
+            <span style={{ fontFamily: 'Parabole' }}>Y</span>OUR
+            <div className="flex items-center">
+              <span className="w-8 h-0.5 bg-white inline-block mx-3 align-middle"></span>
+              <span className="italic font-normal">AI PROJECT</span>
+            </div>
+          </h1>
+          <p className="mt-6 text-lg md:text-[1.3rem] 3xl:text-[1.4rem] font-light">
             Because every project is unique, we provide a tailor-made solution
             designed to meet your specific needs.
           </p>
@@ -29,14 +28,17 @@ export default function ContactForm() {
 
         {/* Right Side Form */}
         <form
-          className="bg-gradient-to-br from-[#2a399a]/80 to-[#162398]/80 backdrop-blur-md rounded-2xl p-8 space-y-6 text-white shadow-lg pt-16 mt-16 border border-gray-500/30 hover:border-white/50 transition-colors duration-300"
+          className="bg-gradient-to-br from-[#4085e6] via-[#283181] to-[#0F137D] backdrop-blur-md rounded-2xl p-8 xl:p-12 space-y-6 text-white shadow-lg pt-6 mt-16 border border-gray-500/30 hover:border-white/50 transition-colors duration-300 w-full xl:ml-auto"
           onSubmit={(e) => e.preventDefault()}
         >
-          <h3 className="text-center text-lg font-semibold mb-4">
+          <h3 className="text-center text-lg md:text-[1.2rem] xl:text-[1.4rem] font-semibold mb-[5rem]">
             Directly exchange with our experts
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div
+            style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
+            className="text-[1.1rem] xl:text-[1.3rem] grid grid-cols-1 sm:grid-cols-2 gap-4"
+          >
             <input
               type="text"
               placeholder="Your first name*"
@@ -64,27 +66,31 @@ export default function ContactForm() {
           </div>
 
           <input
+            style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
             type="text"
-            placeholder="Entreprise"
+            placeholder="Enterprise"
             className="input w-full"
           />
           <textarea
+            style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
             placeholder="Tell us, how can we help you?*"
-            className="input w-full h-32 resize-none"
+            className="input w-full h-[14rem] resize-none"
             required
           ></textarea>
 
-          <div className="space-y-2 text-sm">
-            <label className="flex items-center gap-2">
+          <div className="space-y-2 text-base">
+            <label className="flex items-center gap-2 text-white/60">
               <input
+                style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
                 type="checkbox"
                 checked={isPrivate}
                 onChange={() => setIsPrivate(!isPrivate)}
               />
               This project is private
             </label>
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-white/60">
               <input
+                style={{ fontFamily: 'PPNeueMontreal', fontWeight: 300 }}
                 type="checkbox"
                 checked={wantsNDA}
                 onChange={() => setWantsNDA(!wantsNDA)}
@@ -93,17 +99,17 @@ export default function ContactForm() {
             </label>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row justify-between gap-4 pt-4">
             <button
               type="button"
-              className="flex items-center gap-2 px-6 py-2 border border-white/40 rounded-full hover:bg-white/10 transition"
+              className="w-fit pr-3 h-[3.5rem] border pl-4 py-2 xl:pl-6 xl:py-3 rounded-full flex items-center hover:bg-[#001f3f]/5 transition text-sm md:text-base xl:text-lg whitespace-nowrap"
             >
               <Paperclip className="w-4 h-4" /> Attachments
             </button>
 
             <button
               type="submit"
-              className="bg-white text-black px-8 py-2 rounded-full hover:bg-white/80 transition"
+              className="bg-white text-black px-8 py-3 items-center justify-between rounded-full hover:bg-white/80 transition w-full md:w-[200px]"
             >
               Send →
             </button>
