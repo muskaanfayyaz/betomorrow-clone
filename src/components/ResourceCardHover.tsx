@@ -1,3 +1,5 @@
+// ResourceCard.tsx
+
 import React from "react";
 import Image from "next/image";
 
@@ -51,19 +53,17 @@ const ResourceCard: React.FC<Resource> = ({
   hoverTitle,
 }) => {
   return (
-    <div className="relative group rounded-3xl overflow-hidden shadow-lg transition-all duration-500 bg-white w-full max-w-full">
-      {/* Image Container */}
+    <div className="relative group rounded-3xl overflow-hidden shadow-lg transition-all duration-500 bg-white w-full max-w-full min-h-[400px] lg:h-[500px] xl:min-h-[auto]">
+      {/* Image with tag */}
       <div className="w-full h-48 sm:h-56 md:h-60 lg:h-64 xl:h-72 2xl:h-80 relative transition-all duration-500 group-hover:h-40">
-        <Image
-          src={image}
-          alt="card image"
-          fill
-          className="object-cover"
-        />
+        <Image src={image} alt="card image" fill className="object-cover" />
+        <span className="absolute top-3 right-3 bg-white text-black text-[10px] sm:text-xs font-semibold rounded-full px-3 py-1 border border-black z-10">
+          ARTICLE
+        </span>
       </div>
 
       {/* Title and Meta */}
-      <div className="p-4 transition-all duration-500 group-hover:pt-8 group-hover:pb-28">
+      <div className="p-4 pt-4 pb-32 xl:pt-4 xl:pb-4 transition-all duration-500 xl:group-hover:pt-8 xl:group-hover:pb-28">
         <p className="text-xs sm:text-sm text-gray-500">
           {date} · {time} ⏱️
         </p>
@@ -72,9 +72,13 @@ const ResourceCard: React.FC<Resource> = ({
         </h3>
       </div>
 
-      {/* Hover Content Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-        <div className="flex items-center justify-between gap-4 border-t border-[#295ca4] pt-6 pointer-events-auto">
+      {/* Hover Content */}
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-end p-4
+        opacity-100 pointer-events-auto
+        xl:opacity-0 xl:pointer-events-none
+        xl:group-hover:opacity-100 xl:group-hover:pointer-events-auto
+        transition-opacity duration-500">
+        <div className="flex items-center justify-between gap-4 border-t border-[#295ca4] pt-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 sm:w-12 sm:h-12 relative rounded-full overflow-hidden border-2 border-gray-300 shrink-0">
               <Image src={hoverImage} alt="person" fill className="object-cover" />
@@ -95,31 +99,38 @@ const ResourceCard: React.FC<Resource> = ({
 
 export default function ResourcesSection() {
   return (
-    <div className="px-4 sm:px-6 lg:px-12 xl:px-32 2xl:px-64 py-16 md:py-24 max-w-[1920px] mx-auto">
-      {/* Top Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
-        {/* Heading */}
-        <h1 className="text-[1.6rem] small:text-[2.2rem] md:text-[3.5rem] small:pr-[4rem] 3xl:pr-36 sm:text-7xl lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-black whitespace-normal">
-        S<span style={{ fontFamily: 'Parabole' }}>TA</span>Y{' '}T
-  <span style={{ fontFamily: 'Parabole' }}>U</span>NED
-  <div className='flex items-center'>
-  <span className="w-8 h-0.5 bg-black inline-block mx-3 align-middle"></span>
-  <span className="italic font-normal">OUR RESSOURCES</span>
-  </div>
-</h1>
-
-        {/* Right Button */}
-        <button 
-        style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
-        className="self-start md:self-center flex items-center gap-2 border border-black rounded-full px-4 small:px-5 py-2 text-base small:text-[1.2rem] text-black whitespace-nowrap">
+    <div className="px-4 lg:px-2 xl:px-2 2xl:px-64 py-16 md:py-24 max-w-[1920px] mx-auto">
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row justify-between items-start md:items-center mb-8 gap-6">
+        <h1 className="w-full text-left text-[1.7rem] small:text-[2.2rem] md:text-[3.5rem] small:pr-[4rem] 3xl:pr-36 sm:text-7xl lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-black whitespace-normal">
+          S<span style={{ fontFamily: 'Parabole' }}>TA</span>Y T
+          <span style={{ fontFamily: 'Parabole' }}>U</span>NED
+          <div className="flex items-center mt-2">
+            <span className="w-8 h-0.5 bg-black inline-block mr-3 align-middle"></span>
+            <span className="italic font-normal">OUR RESSOURCES</span>
+          </div>
+        </h1>
+        <button
+          style={{ fontFamily: "PPNeueMontreal", fontWeight: 400 }}
+          className="self-start md:items-start flex items-start gap-2 border border-black rounded-full px-4 small:px-5 py-[0.8rem] text-base small:text-[1.2rem] text-black whitespace-nowrap"
+        >
           See ressources <span className="text-lg small:text-xl">→</span>
         </button>
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10">
+      <div className="md:px-28 grid grid-cols-1 md:grid-cols-1 gap-6 xl:grid-cols-3 xl:gap-10 relative lg:grid-cols-2 lg:auto-rows-auto">
         {resources.map((res, idx) => (
-          <ResourceCard key={idx} {...res} />
+          <div
+            key={idx}
+            className={`
+              ${idx === 0 ? 'lg:row-start-1 lg:col-start-1' : ''}
+              ${idx === 1 ? 'lg:row-start-1 lg:col-start-2' : ''}
+              ${idx === 2 ? 'lg:row-start-2 lg:col-span-2 lg:justify-self-center lg:w-2/3 xl:row-auto xl:col-span-1 xl:w-auto xl:justify-self-auto' : ''}
+            `}
+          >
+            <ResourceCard {...res} />
+          </div>
         ))}
       </div>
     </div>
