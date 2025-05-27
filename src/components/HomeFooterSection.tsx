@@ -8,7 +8,7 @@ export default function HomeFooterSection() {
   const [email, setEmail] = useState('');
 
   return (
-    <section className="bg-gradient-to-b from-[#e5ecf9] to-[#eaf1ff] text-black px-6 py-12 md:px-12 md:py-20 relative overflow-hidden max-w-[2560px] mx-auto">
+    <section className="bg-gradient-to-b from-[#e5ecf9] to-[#eaf1ff] text-black px-6 py-12 md:px-12 md:py-20 3xl:px-[36rem] relative overflow-hidden max-w-[2560px] mx-auto">
       {/* Newsletter form */}
       <div className="flex flex-col lg:flex-col xl:flex-row justify-between items-start gap-10 mb-12 border-b border-gray-400 pb-12">
         <div className="w-full lg:w-1/2 max-w-[600px]">
@@ -23,7 +23,7 @@ export default function HomeFooterSection() {
           <p className="text-[0.9rem] md:text-[1.3rem] text-gray-700">Shortcut is Betomorrow&apos;s quarterly newsletter</p>
         </div>
 
-        <form className="flex flex-col xl:flex-row gap-4 w-full max-w-[800px]">
+        <form className="xl:pl-[13rem] flex flex-col gap-4 w-full max-w-[800px]">
           <input
             type="text"
             placeholder="Your name"
@@ -50,9 +50,9 @@ export default function HomeFooterSection() {
       </div>
 
       {/* Section Wrapper */}
-      <div className="flex flex-col lg:flex-col justify-between items-start gap-10 mb-12">
+      <div className="flex flex-col lg:flex-col xl:flex-row justify-between items-start gap-10 mb-12">
         {/* Heading */}
-        <h1 className="text-left text-[2.5rem] small:text-[2.8rem] md:text-[4.5rem] lg:text-[4.9rem] xl:text-[3.5rem] 3xl:text-[4rem] leading-tight text-black w-full lg:w-1/2 max-w-[600px]">
+        <h1 className="text-left text-[2.5rem] small:text-[2.8rem] md:text-[4.5rem] lg:text-[4.9rem] xl:text-[5.2rem] 3xl:text-[6.5rem] leading-tight text-black w-full lg:w-1/2 max-w-[600px]">
           <span style={{ fontFamily: 'Parabole' }}>LET&apos;S BUILD TOMORROW TOGETHER</span>
         </h1>
 
@@ -60,8 +60,8 @@ export default function HomeFooterSection() {
         <div className="w-full max-w-[600px] flex flex-col justify-between h-full">
           <div className="grid grid-cols-2 gap-y-1 gap-x-4 text-sm">
             <div>
-              <h4 className="font-normal text-[1.3rem] mb-2">PAGES</h4>
-              <ul className="space-y-2 text-[1.1rem]">
+              <h4 className="font-normal text-[1.3rem] lg:text-[1.4] mb-2">PAGES</h4>
+              <ul className="space-y-2 text-[1.1rem] lg:text-[1.2rem]">
                 <li>Our vision</li>
                 <li>Projects</li>
                 <li>Team</li>
@@ -79,7 +79,7 @@ export default function HomeFooterSection() {
             </div>
           </div>
           <div className="flex justify-end mt-6">
-            <button className="bg-[#0a1e40] text-white px-6 py-4 rounded-full text-base hover:bg-[#123060] whitespace-nowrap">
+            <button className="bg-[#0a1e40] text-white px-6 py-4 rounded-full text-base lg:text-[0.8rem] hover:bg-[#123060] whitespace-nowrap">
               Let&apos;s talk about it →
             </button>
           </div>
@@ -87,7 +87,7 @@ export default function HomeFooterSection() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center text-xs text-gray-500 border-t border-gray-300 pt-6 text-center max-w-[1200px] mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center text-base text-gray-500 border-t border-gray-300 pt-6 text-center max-w-[1200px] mx-auto">
         <div className="flex justify-center">
           <Image
             src="/black-logo.png"
