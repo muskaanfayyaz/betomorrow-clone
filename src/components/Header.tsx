@@ -146,21 +146,25 @@ export default function Header() {
                 <MobileDropdown title="Expertise" items={expertiseItems} />
                 <Link 
                   href="/our-projects" 
-                  className="block py-4 text-gray-800 font-medium border-b border-gray-100 text-base lg:text-lg"
+                  className="block py-4 text-black font-medium border-b border-gray-100 text-[2.5rem]"
+                  style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                 >
                   Our Projects
                 </Link>
                 <Link 
                   href="/resources" 
-                  className="block py-4 text-gray-800 font-medium border-b border-gray-100 text-base lg:text-lg"
+                  className="block py-4 text-black font-medium border-b border-gray-100 text-[2.5rem]"
+                  style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                 >
                   Resources
                 </Link>
                 <Link 
                   href="/lets-talk-ai" 
-                  className="block py-3 font-semibold border-b border-gray-100 text-base lg:text-lg"
+                  className="block py-3 font-semibold border-b border-gray-100 text-[2.5rem]"
                   style={{ 
-                    background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
+                    fontFamily: 'PPNeueMontreal',
+                    fontWeight: 500,
+                    background: 'linear-gradient(90deg, #27408B 0%, #FF802B 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent'
                   }}
@@ -170,31 +174,33 @@ export default function Header() {
               </div>
               
               {/* Fixed Buttons at Bottom */}
-              <div className="p-6 border-t border-gray-200 sticky bottom-0 bg-white">
-                <div className="flex flex-col sm:flex-row gap-4">
+              <div className="p-4 border-t border-gray-200 sticky bottom-0 bg-white">
+                <div className="flex flex-col sm:flex-row gap-3 items-start">
                   <Link
                     href="/start-your-project"
-                    className="flex-1 rounded-full px-6 py-3 text-sm bg-[#13119E] text-white font-semibold text-center shadow-md hover:brightness-110 transition"
+                    className="inline-flex rounded-full px-6 py-2.5 text-base lg:text-lg bg-[#13119E] text-white font-semibold text-left shadow-md hover:brightness-110 transition h-[52px] items-center"
+                    style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                   >
                     Start Your Project
                   </Link>
-                  <div className="relative flex-1">
+                  <div className="relative">
                     <button
                       onClick={toggleLangDropdown}
-                      className="w-full rounded-3xl px-6 py-3 bg-gray-100 text-gray-800 font-medium shadow-sm flex items-center justify-center gap-2 hover:bg-gray-200 text-sm min-w-[48px]"
+                      className="inline-flex rounded-full px-6 py-2.5 bg-[#13119E] text-white font-medium shadow-sm items-center gap-2 hover:brightness-110 text-base lg:text-lg h-[52px] text-left"
+                      style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                     >
                       {language.toUpperCase()}
                       <ChevronDown className={`w-4 h-4 transition-transform ${langDropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
                     </button>
-
                     {langDropdownOpen && (
-                      <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-gray-200 rounded-b-[60px] shadow-lg z-50 overflow-hidden">
+                      <div className="absolute left-0 top-full mt-2 bg-white border border-gray-200 rounded-b-[60px] shadow-lg z-50 overflow-hidden min-w-full">
                         <ul>
                           {language === 'en' ? (
                             <li>
                               <button
                                 onClick={() => selectLanguage('fr')}
-                                className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                                className="inline-flex text-left px-6 py-2.5 hover:bg-blue-50 text-base lg:text-lg text-gray-800 transition items-center h-[52px] w-full"
+                                style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                               >
                                 FR
                               </button>
@@ -203,7 +209,8 @@ export default function Header() {
                             <li>
                               <button
                                 onClick={() => selectLanguage('en')}
-                                className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
+                                className="inline-flex text-left px-6 py-2.5 hover:bg-blue-50 text-base lg:text-lg text-gray-800 transition items-center h-[52px] w-full"
+                                style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                               >
                                 EN
                               </button>
@@ -399,10 +406,11 @@ const MobileDropdown = ({ title, items }: { title: string; items: { href: string
     <div className="border-b border-gray-100">
       <button 
         onClick={() => setOpen(!open)} 
-        className="w-full flex justify-between items-center py-3 text-gray-800 font-semibold text-base lg:text-lg"
+        className="w-full flex justify-between items-center py-3 text-black font-semibold text-[2.5rem]"
+        style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
       >
         <span>{title}</span>
-        <ChevronDown className={`w-4 h-4 lg:w-5 lg:h-5 transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
+        <ChevronDown className={`w-5 h-5 lg:w-6 lg:h-6 transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </button>
       {open && (
         <ul className="pl-4 space-y-2 pb-3">
@@ -410,7 +418,8 @@ const MobileDropdown = ({ title, items }: { title: string; items: { href: string
             <li key={item.href}>
               <Link 
                 href={item.href} 
-                className="flex items-center gap-3 py-2 text-sm lg:text-base text-gray-700 hover:text-blue-600"
+                className="flex items-center gap-3 py-2 text-[2.5rem] text-black hover:text-blue-600"
+                style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
               >
                 <Image
                   src={`/${String(idx + 1).padStart(2, '0')}.png`}
