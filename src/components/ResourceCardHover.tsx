@@ -98,23 +98,21 @@ export default function ResourcesSection() {
     <div className="px-4 sm:px-6 lg:px-12 xl:px-32 2xl:px-64 py-16 md:py-24 max-w-[1920px] mx-auto">
       {/* Top Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
-        {/* Left */}
-        <div className="text-left max-w-xl">
-          <Image
-            src="/resourse-title.png"
-            alt="STAY TUNED OUR RESSOURCES"
-            width={550}
-            height={450}
-            className="h-auto object-contain mb-2"
-          />
-          <p className="text-sm md:text-base text-black mt-2">
-            100% AI resources to help you reach the top.
-          </p>
-        </div>
+        {/* Heading */}
+        <h1 className="text-[1.6rem] small:text-[2.2rem] md:text-[3.5rem] small:pr-[4rem] 3xl:pr-36 sm:text-7xl lg:text-6xl xl:text-6xl 3xl:text-[4rem] mb-6 leading-none text-black whitespace-normal">
+        S<span style={{ fontFamily: 'Parabole' }}>TA</span>Y{' '}T
+  <span style={{ fontFamily: 'Parabole' }}>U</span>NED
+  <div className='flex items-center'>
+  <span className="w-8 h-0.5 bg-black inline-block mx-3 align-middle"></span>
+  <span className="italic font-normal">OUR RESSOURCES</span>
+  </div>
+</h1>
 
         {/* Right Button */}
-        <button className="self-start md:self-center flex items-center gap-2 border border-black rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm text-black whitespace-nowrap">
-          See Resources <span className="text-lg sm:text-xl">→</span>
+        <button 
+        style={{ fontFamily: 'PPNeueMontreal', fontWeight: 400 }}
+        className="self-start md:self-center flex items-center gap-2 border border-black rounded-full px-4 small:px-5 py-2 text-base small:text-[1.2rem] text-black whitespace-nowrap">
+          See ressources <span className="text-lg small:text-xl">→</span>
         </button>
       </div>
 
