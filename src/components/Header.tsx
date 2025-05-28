@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Menu } from 'lucide-react';
+import { ChevronDown, Menu, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 const agencyItems = [
@@ -319,6 +319,21 @@ export default function Header() {
               Expertise
               <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'expertise' ? 'rotate-180' : 'rotate-0'}`} />
             </button>
+
+            <NavLink href="/resources" label="Resources" />
+
+            <Link
+              href="/lets-talk-ai"
+              className="px-0 lg:px-0 py-1 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-1 lg:gap-2"
+              style={{
+                background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              <Sparkles className="w-4 h-4 lg:w-5 lg:h-5" fill="#397FFF" />
+              Let&apos;s Talk AI
+            </Link>
           </div>
 
           {/* Dropdown menu */}
@@ -391,11 +406,7 @@ const MobileDropdown = ({ title, items }: { title: string; items: { href: string
 };
 
 const NavLink = ({ href, label }: { href: string; label: string }) => (
-  <Link 
-    href={href} 
-    className="flex items-center gap-3 py-2 text-[2.5rem] text-black hover:text-blue-600"
-    style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
-  >
+  <Link href={href} className="px-0 lg:px-0 py-1 rounded-full text-black hover:bg-blue-100 transition text-xs lg:text-sm">
     {label}
   </Link>
 );
