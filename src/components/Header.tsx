@@ -228,18 +228,18 @@ export default function Header() {
       )}
 
       {/* Right Buttons */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden xl:flex items-center gap-3 h-[64px] z-50">
+      <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden xl:flex items-center gap-3 h-[56px] z-50">
         <Link
           href="/start-your-project"
-          className="rounded-full px-6 py-2 text-xs lg:text-base bg-[#13119E] text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[64px] lg:h-[64px] flex items-center leading-[1.5rem]"
+          className="rounded-full px-6 py-2 text-xs lg:text-base bg-[#13119E] text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[56px] flex items-center leading-[1.5rem]"
         >
           Start Your Project
         </Link>
 
-        <div className="relative h-[64px] lg:h-[64px] flex items-center">
+        <div className="relative h-[56px] flex items-center">
           <button
             onClick={toggleLangDropdown}
-            className="rounded-full px-4 py-2 bg-white text-gray-800 font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-xs lg:text-sm h-full leading-[1.5rem] min-w-[48px]"
+            className="rounded-full px-4 py-2 bg-white text-gray-800 font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-xs lg:text-sm h-[56px] leading-[1.5rem] min-w-[48px]"
             type="button"
             aria-haspopup="true"
             aria-expanded={langDropdownOpen}
