@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Sparkles, Menu} from 'lucide-react';
+import { ChevronDown, Menu } from 'lucide-react';
 import Image from 'next/image';
 
 const agencyItems = [
@@ -178,7 +178,7 @@ export default function Header() {
                 <div className="flex flex-col sm:flex-row gap-3 items-start">
                   <Link
                     href="/start-your-project"
-                    className="inline-flex rounded-full px-6 py-2.5 text-base lg:text-lg bg-[#13119E] text-white font-semibold text-left shadow-md hover:brightness-110 transition h-[52px] items-center"
+                    className="inline-flex rounded-full px-6 py-2.5 text-base lg:text-lg bg-[#13119E] text-white font-semibold text-left shadow-md hover:brightness-110 transition h-[64px] items-center"
                     style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                   >
                     Start Your Project
@@ -186,7 +186,7 @@ export default function Header() {
                   <div className="relative">
                     <button
                       onClick={toggleLangDropdown}
-                      className="inline-flex rounded-full px-6 py-2.5 bg-[#13119E] text-white font-medium shadow-sm items-center gap-2 hover:brightness-110 text-base lg:text-lg h-[52px] text-left"
+                      className="inline-flex rounded-full px-6 py-2.5 bg-[#13119E] text-white font-medium shadow-sm items-center gap-2 hover:brightness-110 text-base lg:text-lg h-[64px] text-left"
                       style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                     >
                       {language.toUpperCase()}
@@ -199,7 +199,7 @@ export default function Header() {
                             <li>
                               <button
                                 onClick={() => selectLanguage('fr')}
-                                className="inline-flex text-left px-6 py-2.5 hover:bg-blue-50 text-base lg:text-lg text-gray-800 transition items-center h-[52px] w-full"
+                                className="inline-flex text-left px-6 py-2.5 hover:bg-blue-50 text-base lg:text-lg text-gray-800 transition items-center h-[64px] w-full"
                                 style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                               >
                                 FR
@@ -209,7 +209,7 @@ export default function Header() {
                             <li>
                               <button
                                 onClick={() => selectLanguage('en')}
-                                className="inline-flex text-left px-6 py-2.5 hover:bg-blue-50 text-base lg:text-lg text-gray-800 transition items-center h-[52px] w-full"
+                                className="inline-flex text-left px-6 py-2.5 hover:bg-blue-50 text-base lg:text-lg text-gray-800 transition items-center h-[64px] w-full"
                                 style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
                               >
                                 EN
@@ -231,12 +231,12 @@ export default function Header() {
       <div className="absolute top-1/2 -translate-y-1/2 right-6 hidden xl:flex items-center gap-3 h-[64px] z-50">
         <Link
           href="/start-your-project"
-          className="rounded-full px-6 py-2 text-xs lg:text-base bg-[#13119E] text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[56px] lg:h-[64px] flex items-center leading-[1.5rem]"
+          className="rounded-full px-6 py-2 text-xs lg:text-base bg-[#13119E] text-white font-semibold shadow-md hover:brightness-110 transition duration-300 h-[64px] lg:h-[64px] flex items-center leading-[1.5rem]"
         >
           Start Your Project
         </Link>
 
-        <div className="relative h-[56px] lg:h-[64px] flex items-center">
+        <div className="relative h-[64px] lg:h-[64px] flex items-center">
           <button
             onClick={toggleLangDropdown}
             className="rounded-full px-4 py-2 bg-white text-gray-800 font-medium shadow-sm flex items-center gap-1 hover:bg-gray-100 text-xs lg:text-sm h-full leading-[1.5rem] min-w-[48px]"
@@ -319,21 +319,6 @@ export default function Header() {
               Expertise
               <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'expertise' ? 'rotate-180' : 'rotate-0'}`} />
             </button>
-
-            <NavLink href="/resources" label="Resources" />
-
-            <Link
-              href="/lets-talk-ai"
-              className="px-0 lg:px-0 py-1 rounded-full font-semibold hover:opacity-90 transition flex items-center gap-1 lg:gap-2"
-              style={{
-                background: 'linear-gradient(90deg, #27408B 0%, #397FFF 40%, #FF802B 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              <Sparkles className="w-4 h-4 lg:w-5 lg:h-5" fill="#397FFF" />
-              Let&apos;s Talk AI
-            </Link>
           </div>
 
           {/* Dropdown menu */}
@@ -363,42 +348,9 @@ export default function Header() {
           )}
         </div>
       </header>
-
-      {/* Additional language dropdown for mobile */}
-      {langDropdownOpen && (
-        <div className="hidden lg:hidden absolute bottom-full left-0 mb-2 w-[48px] bg-white border border-gray-200 rounded-b-[60px] shadow-lg z-50 overflow-hidden">
-          <ul>
-            {language === 'en' ? (
-              <li>
-                <button
-                  onClick={() => selectLanguage('fr')}
-                  className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
-                >
-                  FR
-                </button>
-              </li>
-            ) : (
-              <li>
-                <button
-                  onClick={() => selectLanguage('en')}
-                  className="w-full text-center px-3 py-3 hover:bg-blue-50 text-sm text-gray-800 transition flex items-center justify-center"
-                >
-                  EN
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
-
-const NavLink = ({ href, label }: { href: string; label: string }) => (
-  <Link href={href} className="px-0 lg:px-0 py-1 rounded-full text-black hover:bg-blue-100 transition text-xs lg:text-sm">
-    {label}
-  </Link>
-);
 
 const MobileDropdown = ({ title, items }: { title: string; items: { href: string; label: string }[] }) => {
   const [open, setOpen] = useState(false);
@@ -437,3 +389,13 @@ const MobileDropdown = ({ title, items }: { title: string; items: { href: string
     </div>
   );
 };
+
+const NavLink = ({ href, label }: { href: string; label: string }) => (
+  <Link 
+    href={href} 
+    className="flex items-center gap-3 py-2 text-[2.5rem] text-black hover:text-blue-600"
+    style={{ fontFamily: 'PPNeueMontreal', fontWeight: 500 }}
+  >
+    {label}
+  </Link>
+);
